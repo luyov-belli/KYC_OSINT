@@ -50,8 +50,9 @@ Escribes el nombre del lead y sus datos declarados. En un minuto sale un **borra
 
 **URL pública:** _pendiente (Streamlit Community Cloud)_.
 
-- **Modo sintético (abierto):** cinco personas ficticias con evidencia ficticia: un creador de contenido que opina de política sin ser PEP, una contadora con un homónimo sentenciado, un ex funcionario regional (PEP), un empresario con investigación fiscal por lavado y una comerciante que declara muy por encima de su tope.
+- **Modo sintético (abierto):** cinco personas ficticias con evidencia ficticia: un creador de contenido que opina de política sin ser PEP, una contadora con un homónimo sentenciado, un ex funcionario regional (PEP), un empresario con investigación fiscal por lavado y una comerciante que declara muy por encima de su tope. Sus resultados están precalculados en [`fixtures/resultados/`](fixtures/resultados/): se muestran al instante y sin costo de API.
 - **Modo en vivo (con código de acceso):** busca en fuentes públicas reales. Está protegido para que nadie use la URL pública para perfilar a terceros. En la presentación corre sobre mi propio perfil.
+- **Simular otro monto:** después de generar un informe, cambias el monto declarado y se recalculan al instante el monto tope, la coherencia, el riesgo y el tipo de DD. Es Python puro: no vuelve a llamar al modelo ni cuesta API. El texto del borrador conserva el monto original, y una nota lo advierte.
 
 **Correrlo en local**
 
@@ -90,7 +91,8 @@ flowchart LR
 - **Precio:** _preliminar, a validar en las conversaciones:_ **S/ 49 por informe**, o **S/ 990 al mes** con 30 informes.
 - **Costo por informe (medido con `usage` de la API):**
   - **En vivo:** ~US$ 0.43 (≈ S/ 1.5). Son 5 búsquedas web (US$ 0.05), ~51 mil tokens de entrada y ~9 mil de salida con Claude Opus 5.5. Tarda entre 75 y 95 s.
-  - **Sintético:** ~US$ 0.09 por informe (sin búsqueda web) y ~25 s ([evaluación](docs/eval_sinteticos.md): 5/5 casos correctos).
+  - **Sintético:** ~US$ 0.09 por informe al generarlo (sin búsqueda web) y ~25 s ([evaluación](docs/eval_sinteticos.md): 5/5 casos correctos). Mostrarlo desde el resultado guardado: US$ 0.
+  - **Simular otro monto:** US$ 0 (reglas en Python).
   - **Servidor:** S/ 0 en Streamlit Community Cloud.
   - **Margen bruto:** con S/ 49 por informe, el costo variable es ~3 % del precio.
 - **Qué sigue:** piloto en mi firma, plantilla de KYC de cada cliente, más fuentes peruanas (Poder Judicial, SUNARP con convenio) e historial de monitoreo.

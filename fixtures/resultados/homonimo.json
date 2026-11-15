@@ -1,0 +1,208 @@
+{
+ "profile": {
+  "full_name": "Lucía Fernanda Paredes Quispe",
+  "dni": "40000002",
+  "age": 41,
+  "city": "Trujillo",
+  "employer": "Agroexportadora Costa Norte S.A.",
+  "declared_occupation": "Contadora, jefa de contabilidad",
+  "amount": 200000.0,
+  "currency": "USD",
+  "declared_source_of_funds": "Ahorros de su carrera y la venta de su participación en un estudio contable",
+  "via_company": false,
+  "company_name": null,
+  "funds_from_abroad": false
+ },
+ "mode": "sintético",
+ "hits": [],
+ "lists_date": "2026-11-15",
+ "sources": [
+  {
+   "id": 1,
+   "url": "https://empleos.ejemplo.pe/perfil/lucia-paredes-quispe",
+   "title": "Lucía Paredes Quispe · Jefa de Contabilidad · Agroexportadora Costa Norte",
+   "date": "2026-08-01",
+   "text": "Contadora pública colegiada con 17 años de experiencia. Jefa de contabilidad en Agroexportadora Costa Norte S.A. (Trujillo) desde 2018. Antes, socia fundadora de Paredes & Ríos Contadores."
+  },
+  {
+   "id": 2,
+   "url": "https://regional.ejemplo.pe/puno/2023/11/sentencia-estafa",
+   "title": "Condenan a mujer por estafa en venta de terrenos en Juliaca",
+   "date": "2023-11-09",
+   "text": "El juzgado condenó a Lucía Paredes Quispe, de 63 años, natural de Juliaca, a cuatro años de pena suspendida por estafar a compradores de lotes."
+  },
+  {
+   "id": 3,
+   "url": "https://regional.ejemplo.pe/la-libertad/2025/06/estudio-contable-fusion",
+   "title": "Estudio contable trujillano se integra a firma nacional",
+   "date": "2025-06-17",
+   "text": "Paredes & Ríos Contadores fue adquirido por una firma de auditoría nacional. La socia fundadora Lucía Fernanda Paredes Quispe vendió su participación por S/ 350,000, según el comunicado de la firma compradora."
+  },
+  {
+   "id": 4,
+   "url": "https://colegio-contadores.ejemplo.pe/habilidad/40000002",
+   "title": "Constancia de habilidad profesional",
+   "date": "2026-10-30",
+   "text": "Paredes Quispe, Lucía Fernanda. Matrícula 10-0000 (ficticia). Estado: hábil. Colegio de Contadores de La Libertad."
+  },
+  {
+   "id": 5,
+   "url": "https://noticias.ejemplo.pe/regiones/2026/02/agroexportaciones-record",
+   "title": "Agroexportaciones de La Libertad marcan récord",
+   "date": "2026-02-03",
+   "text": "Agroexportadora Costa Norte S.A. reportó ventas por US$ 85 millones. La nota cita a su gerente general; no menciona a otros funcionarios."
+  }
+ ],
+ "dossier": "",
+ "findings": {
+  "identity_summary": "Lucía Fernanda Paredes Quispe, 41 años, contadora pública colegiada hábil en el Colegio de Contadores de La Libertad, jefa de contabilidad de Agroexportadora Costa Norte S.A. (Trujillo) desde 2018. Fue socia fundadora de Paredes & Ríos Contadores y vendió su participación en 2025 por S/ 350,000, lo que es consistente con la fuente de fondos declarada.",
+  "evidence": [
+   {
+    "source_id": 1,
+    "summary": "Perfil profesional: contadora colegiada con 17 años de experiencia, jefa de contabilidad en Agroexportadora Costa Norte S.A. desde 2018 y ex socia fundadora de Paredes & Ríos Contadores.",
+    "category": "empleo_cargo",
+    "source_type": "otro",
+    "identity_score": 0.9,
+    "identity_reason": "Coinciden el empleador, el cargo, la ciudad y la ocupación declarados; la trayectoria es compatible con su edad.",
+    "relevance_score": 0.6,
+    "relevance_reason": "Documenta la carrera y el cargo que sustentan los ahorros declarados.",
+    "risk_direction": "reduce",
+    "date": "2026-08-01"
+   },
+   {
+    "source_id": 2,
+    "summary": "Una mujer llamada Lucía Paredes Quispe, de 63 años y natural de Juliaca, fue condenada por estafa en la venta de lotes.",
+    "category": "sancion_o_proceso",
+    "source_type": "medio",
+    "identity_score": 0.05,
+    "identity_reason": "La edad (63 frente a 41) y la ciudad (Juliaca frente a Trujillo) son incompatibles; además, no aparece el segundo nombre.",
+    "relevance_score": 0.1,
+    "relevance_reason": "Se trata de un homónimo, por lo que no afecta el perfil de riesgo de la clienta.",
+    "risk_direction": "neutral",
+    "date": "2023-11-09"
+   },
+   {
+    "source_id": 3,
+    "summary": "Paredes & Ríos Contadores fue adquirido por una firma nacional; la socia fundadora Lucía Fernanda Paredes Quispe vendió su participación por S/ 350,000.",
+    "category": "patrimonio_negocio",
+    "source_type": "medio",
+    "identity_score": 0.9,
+    "identity_reason": "Coinciden el nombre completo, el estudio mencionado en la fuente 1 y la región (Trujillo).",
+    "relevance_score": 0.8,
+    "relevance_reason": "Corrobora el evento de liquidez declarado como fuente de fondos, con un monto publicado.",
+    "risk_direction": "reduce",
+    "date": "2025-06-17"
+   },
+   {
+    "source_id": 4,
+    "summary": "Constancia de habilidad profesional: Paredes Quispe, Lucía Fernanda, en estado hábil en el Colegio de Contadores de La Libertad.",
+    "category": "empleo_cargo",
+    "source_type": "registro_oficial",
+    "identity_score": 0.95,
+    "identity_reason": "La URL corresponde al DNI 40000002 y coinciden el nombre completo y la región.",
+    "relevance_score": 0.5,
+    "relevance_reason": "Confirma de forma oficial la profesión declarada.",
+    "risk_direction": "reduce",
+    "date": "2026-10-30"
+   },
+   {
+    "source_id": 5,
+    "summary": "Agroexportadora Costa Norte S.A. reportó ventas por US$ 85 millones; la nota no menciona a la clienta.",
+    "category": "otro",
+    "source_type": "medio",
+    "identity_score": 0.3,
+    "identity_reason": "Solo menciona al empleador; la clienta no aparece en la nota.",
+    "relevance_score": 0.2,
+    "relevance_reason": "Indica que el empleador es una empresa grande, lo que es compatible con un cargo de jefatura.",
+    "risk_direction": "neutral",
+    "date": "2026-02-03"
+   }
+  ],
+  "pep": {
+   "is_pep": "no",
+   "relation": "ninguna",
+   "role": null,
+   "rationale": "Ninguna fuente indica un cargo público ni vínculos familiares o de colaboración cercana con personas PEP."
+  },
+  "wealth": {
+   "occupation_group": 2,
+   "occupation_label": "Contadora pública, jefa de contabilidad",
+   "career_years": 17,
+   "seniority": "senior",
+   "business_owner": false,
+   "business_size": "ninguna",
+   "liquidity_events": [
+    {
+     "description": "Venta de su participación en Paredes & Ríos Contadores a una firma de auditoría nacional (2025)",
+     "amount_pen": 350000.0,
+     "source_id": 3
+    }
+   ],
+   "rationale": "Tiene 17 años de carrera y ejerce una jefatura de contabilidad en una agroexportadora grande. La venta documentada de su participación por S/ 350,000 respalda la fuente de fondos declarada. Ya no es socia de ningún negocio."
+  },
+  "homonyms_note": "La fuente 2 corresponde a una homónima de 63 años, natural de Juliaca, condenada por estafa. Se descarta por la incompatibilidad de edad y de ciudad."
+ },
+ "wealth": {
+  "declared_pen": 681400.0,
+  "fx": 3.407,
+  "fx_source": "BCRP, venta SBS 12.Nov.26",
+  "labor_base": 73457.3749679671,
+  "labor_tope": 714363.481151849,
+  "business_base": 0.0,
+  "business_tope": 0.0,
+  "events_pen": 350000.0,
+  "base_pen": 423457.3749679671,
+  "tope_pen": 1064363.481151849,
+  "ratio": 0.6401948319972348,
+  "coherence": "pedir_sustento",
+  "percentile_tope": "p95",
+  "career_years": 17,
+  "occupation": "Profesionales científicos e intelectuales",
+  "assumptions": [
+   "Ingreso laboral: ENAHO 2024 (INEI), base p50, tope según seniority",
+   "Ahorro 10% (base) a 35% (tope), retorno real 4% anual",
+   "Tipo de cambio S/ 3.407 por US$ (BCRP, venta SBS 12.Nov.26)"
+  ]
+ },
+ "risk": {
+  "score": 15,
+  "level": "medio",
+  "dd_type": "estándar",
+  "factors": [
+   {
+    "rule": "Origen de la riqueza",
+    "detail": "El monto declarado es el 64% del tope plausible: pedir sustento documentario",
+    "points": 15,
+    "forces_edd": false
+   }
+  ],
+  "recommendation": "Debida diligencia estándar: completar el sustento de fondos antes de la apertura."
+ },
+ "narrative": {
+  "perfil_profesional": "Lucía Fernanda Paredes Quispe, DNI 40000002, 41 años, reside en Trujillo. Es contadora pública colegiada en estado hábil en el Colegio de Contadores de La Libertad [4]. Tiene 17 años de experiencia profesional y es jefa de contabilidad de Agroexportadora Costa Norte S.A. desde 2018 [1]. Fue socia fundadora de Paredes & Ríos Contadores [1][3]. El perfil coincide con la ocupación y el empleador declarados [1][4].",
+  "exposicion_politica": "No se encontraron fuentes que indiquen cargo público, ni vínculos familiares o de colaboración cercana con personas PEP. Se clasifica como no PEP. Sin coincidencias en las listas OFAC SDN ni ONU (consulta del 2026-11-15).",
+  "noticias_adversas": "No se encontraron noticias adversas sobre la clienta. Se deja constancia de un homónimo: la fuente [2] reporta la condena por estafa de una mujer llamada Lucía Paredes Quispe, de 63 años y natural de Juliaca. Se descarta por incompatibilidad de edad (63 frente a 41) y de ciudad (Juliaca frente a Trujillo). Además, en esa fuente no aparece el segundo nombre.",
+  "origen_riqueza_y_fondos": "La clienta declara aportar US$ 200,000 (S/ 681,400 al tipo de cambio de S/ 3.407), provenientes de los ahorros de su carrera y de la venta de su participación en un estudio contable. La venta está corroborada: Paredes & Ríos Contadores fue adquirido por una firma nacional y la clienta vendió su participación por S/ 350,000 en 2025 [3]. Los ahorros son compatibles con 17 años de carrera y una jefatura de contabilidad [1]. El monto tope plausible estimado es S/ 1,064,363, con un rango de S/ 423,457 a S/ 1,064,363. El monto declarado equivale al 64% del tope. La parte no cubierta por la venta, alrededor de S/ 331,400, debe sustentarse con documentos de ahorro laboral. Supuestos del cálculo: ingreso laboral según ENAHO 2024 (INEI), con base p50 y tope según seniority; tasa de ahorro de 10% (base) a 35% (tope); retorno real de 4% anual. Los fondos no provienen del exterior ni se canalizan a través de una empresa.",
+  "conclusion": "El nivel de riesgo es medio, con un puntaje de 15. El único factor es el origen de la riqueza: el monto declarado representa el 64% del tope plausible, por lo que se requiere sustento documentario. No es PEP. No registra coincidencias en listas de sanciones ni noticias adversas propias; la condena reportada en [2] corresponde a un homónimo descartado. Se recomienda debida diligencia estándar y completar el sustento de fondos antes de la apertura.",
+  "documentos_a_solicitar": [
+   "Contrato de compraventa de la participación en Paredes & Ríos Contadores (2025)",
+   "Constancia bancaria del abono de S/ 350,000 por la venta de la participación",
+   "Estados de cuenta bancarios de los últimos 12 a 24 meses que muestren los ahorros acumulados",
+   "Boletas de pago recientes y/o certificado de retenciones de quinta categoría emitido por Agroexportadora Costa Norte S.A.",
+   "Declaraciones juradas de impuesto a la renta (SUNAT) de los últimos ejercicios, incluida la renta por la venta de la participación",
+   "Constancia de trabajo de Agroexportadora Costa Norte S.A. que indique cargo y antigüedad"
+  ]
+ },
+ "usage": {
+  "input_tokens": 8237,
+  "output_tokens": 2973,
+  "web_searches": 0,
+  "calls": [
+   "extraccion",
+   "redaccion"
+  ]
+ },
+ "seconds": 26.224210262298584,
+ "generated_at": "2026-11-15 18:31",
+ "amount_note": ""
+}

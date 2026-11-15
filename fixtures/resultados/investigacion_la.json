@@ -1,0 +1,219 @@
+{
+ "profile": {
+  "full_name": "Mauricio Céspedes Lozano",
+  "dni": null,
+  "age": 47,
+  "city": "Lima",
+  "employer": "Transportes Andinos del Sur S.A.C.",
+  "declared_occupation": "Empresario, gerente general",
+  "amount": 900000.0,
+  "currency": "USD",
+  "declared_source_of_funds": "Dividendos de su empresa de transporte de carga",
+  "via_company": false,
+  "company_name": null,
+  "funds_from_abroad": false
+ },
+ "mode": "sintético",
+ "hits": [],
+ "lists_date": "2026-11-15",
+ "sources": [
+  {
+   "id": 1,
+   "url": "https://empresas.ejemplo.pe/ruc/20000000004",
+   "title": "Transportes Andinos del Sur S.A.C. · ficha de empresa",
+   "date": "2026-10-02",
+   "text": "RUC 20000000004 (ficticio). Activa desde 2009. Gerente general y accionista mayoritario: Mauricio Céspedes Lozano. Actividad: transporte de carga por carretera. Tamaño: mediana empresa. 140 trabajadores."
+  },
+  {
+   "id": 2,
+   "url": "https://noticias.ejemplo.pe/judiciales/2026/07/fiscalia-lavado-transportes",
+   "title": "Fiscalía investiga a empresa de transportes por presunto lavado de activos",
+   "date": "2026-07-22",
+   "text": "La Fiscalía Especializada contra la Criminalidad Organizada abrió investigación preliminar contra Mauricio Céspedes Lozano, gerente de Transportes Andinos del Sur S.A.C., por presunto lavado de activos vinculado a operaciones de minería ilegal en Madre de Dios. La defensa niega los cargos."
+  },
+  {
+   "id": 3,
+   "url": "https://noticias.ejemplo.pe/judiciales/2026/08/allanamiento-surco",
+   "title": "Allanan oficinas de transportista investigado",
+   "date": "2026-08-05",
+   "text": "Agentes de la fiscalía allanaron las oficinas de Transportes Andinos del Sur en Surco e incautaron documentos contables. La investigación preliminar sigue en curso."
+  },
+  {
+   "id": 4,
+   "url": "https://redes.ejemplo.com/mcespedes/post/5521",
+   "title": "Publicación de Mauricio Céspedes sobre el paro de transportistas",
+   "date": "2026-09-10",
+   "text": "\"Los transportistas formales pagamos impuestos y nadie nos protege de la extorsión.\""
+  },
+  {
+   "id": 5,
+   "url": "https://noticias.ejemplo.pe/economia/2024/03/transporte-carga-crece",
+   "title": "El transporte de carga crece con la minería del sur",
+   "date": "2024-03-18",
+   "text": "Entre las empresas que ampliaron flota figura Transportes Andinos del Sur, que pasó de 60 a 110 camiones en dos años, según su gerente Mauricio Céspedes Lozano."
+  }
+ ],
+ "dossier": "",
+ "findings": {
+  "identity_summary": "Mauricio Céspedes Lozano parece ser el gerente general y accionista mayoritario de Transportes Andinos del Sur S.A.C., mediana empresa limeña de transporte de carga activa desde 2009, lo que coincide con lo declarado. Sin embargo, desde julio de 2026 figura como investigado por la Fiscalía contra la Criminalidad Organizada por presunto lavado de activos vinculado a minería ilegal en Madre de Dios, con allanamiento de las oficinas de la empresa en agosto de 2026.",
+  "evidence": [
+   {
+    "source_id": 1,
+    "summary": "Ficha de empresa que lo identifica como gerente general y accionista mayoritario de Transportes Andinos del Sur S.A.C., mediana empresa de transporte de carga con 140 trabajadores, activa desde 2009.",
+    "category": "patrimonio_negocio",
+    "source_type": "registro_oficial",
+    "identity_score": 0.95,
+    "identity_reason": "Coinciden nombre completo, empleador declarado y cargo de gerente general.",
+    "relevance_score": 0.75,
+    "relevance_reason": "Respalda la titularidad de la empresa que genera los dividendos declarados como fuente de fondos.",
+    "risk_direction": "reduce",
+    "date": "2026-10-02"
+   },
+   {
+    "source_id": 2,
+    "summary": "La Fiscalía contra la Criminalidad Organizada abrió investigación preliminar contra él por presunto lavado de activos vinculado a minería ilegal en Madre de Dios; la defensa niega los cargos.",
+    "category": "sancion_o_proceso",
+    "source_type": "medio",
+    "identity_score": 0.95,
+    "identity_reason": "Nombre completo y cargo de gerente de la misma empresa declarada.",
+    "relevance_score": 1.0,
+    "relevance_reason": "Proceso fiscal por lavado de activos vinculado a minería ilegal, delito precedente de alto riesgo; afecta directamente la legitimidad de la fuente de fondos (la propia empresa).",
+    "risk_direction": "aumenta",
+    "date": "2026-07-22"
+   },
+   {
+    "source_id": 3,
+    "summary": "Allanamiento fiscal a las oficinas de Transportes Andinos del Sur en Surco con incautación de documentos contables; investigación en curso.",
+    "category": "sancion_o_proceso",
+    "source_type": "medio",
+    "identity_score": 0.85,
+    "identity_reason": "No lo nombra directamente, pero se refiere a la empresa que él dirige y a la misma investigación.",
+    "relevance_score": 0.9,
+    "relevance_reason": "Confirma el avance de la investigación por lavado sobre la empresa origen de los fondos.",
+    "risk_direction": "aumenta",
+    "date": "2026-08-05"
+   },
+   {
+    "source_id": 4,
+    "summary": "Publicación en redes sobre el paro de transportistas, quejándose de la extorsión al transporte formal.",
+    "category": "opinion_redes",
+    "source_type": "red_social_opinion",
+    "identity_score": 0.6,
+    "identity_reason": "Nombre parcial y temática de transporte compatibles, sin otros desambiguadores.",
+    "relevance_score": 0.05,
+    "relevance_reason": "Opinión gremial sin información de cargos públicos ni de riqueza.",
+    "risk_direction": "neutral",
+    "date": "2026-09-10"
+   },
+   {
+    "source_id": 5,
+    "summary": "Nota económica que señala que la empresa pasó de 60 a 110 camiones en dos años en el contexto de la minería del sur, según su gerente.",
+    "category": "patrimonio_negocio",
+    "source_type": "medio",
+    "identity_score": 0.95,
+    "identity_reason": "Nombre completo, empresa y cargo coinciden.",
+    "relevance_score": 0.6,
+    "relevance_reason": "Evidencia crecimiento real del negocio, aunque el vínculo con la minería del sur y la rápida expansión deben contrastarse con la investigación por minería ilegal.",
+    "risk_direction": "neutral",
+    "date": "2024-03-18"
+   }
+  ],
+  "pep": {
+   "is_pep": "no",
+   "relation": "ninguna",
+   "role": null,
+   "rationale": "Ninguna fuente indica cargo público ni vínculo familiar o cercano con funcionarios; su opinión gremial en redes no lo convierte en PEP."
+  },
+  "wealth": {
+   "occupation_group": 1,
+   "occupation_label": "Gerente general y accionista mayoritario de empresa de transporte de carga",
+   "career_years": 17,
+   "seniority": "alta_direccion",
+   "business_owner": true,
+   "business_size": "mediana",
+   "liquidity_events": [],
+   "rationale": "La ficha empresarial y la prensa económica respaldan la titularidad de una mediana empresa activa desde 2009 (≈17 años) en expansión, coherente con dividendos. No se publican montos. No obstante, la investigación fiscal por lavado vinculado a minería ilegal sobre la misma empresa pone en duda la licitud de esos ingresos; se recomienda debida diligencia reforzada y escalamiento al oficial de cumplimiento."
+  },
+  "homonyms_note": "Ninguno detectado; todas las fuentes se vinculan a la misma empresa. La fuente 4 tiene identidad menos segura por usar nombre parcial."
+ },
+ "wealth": {
+  "declared_pen": 3066300.0,
+  "fx": 3.407,
+  "fx_source": "BCRP, venta SBS 12.Nov.26",
+  "labor_base": 157510.43999295804,
+  "labor_tope": 2553425.606355073,
+  "business_base": 1605000.0000000002,
+  "business_tope": 6152500.0,
+  "events_pen": 0,
+  "base_pen": 1762510.4399929582,
+  "tope_pen": 8705925.606355073,
+  "ratio": 0.3522083852590803,
+  "coherence": "coherente",
+  "percentile_tope": "p99",
+  "career_years": 17,
+  "occupation": "Miembros del poder ejecutivo, legislativo, judicial y personal directivo de la administración pública y privada",
+  "assumptions": [
+   "Ingreso laboral: ENAHO 2024 (INEI), base p50, tope según seniority",
+   "Ahorro 10% (base) a 35% (tope), retorno real 4% anual",
+   "Tipo de cambio S/ 3.407 por US$ (BCRP, venta SBS 12.Nov.26)",
+   "Empresa mediana: ventas Ley MYPE × margen 5-10 % × múltiplo 3-5 (UIT S/ 5,350)"
+  ]
+ },
+ "risk": {
+  "score": 85,
+  "level": "alto",
+  "dd_type": "reforzada",
+  "factors": [
+   {
+    "rule": "Noticia adversa",
+    "detail": "[2] La Fiscalía contra la Criminalidad Organizada abrió investigación preliminar contra él por presunto lavado de activos vinculado a minería ilegal en Madre de Dios; la defensa niega los cargos.",
+    "points": 35,
+    "forces_edd": false
+   },
+   {
+    "rule": "Noticia adversa",
+    "detail": "[3] Allanamiento fiscal a las oficinas de Transportes Andinos del Sur en Surco con incautación de documentos contables; investigación en curso.",
+    "points": 35,
+    "forces_edd": false
+   },
+   {
+    "rule": "Monto",
+    "detail": "US$ 900,000 supera el umbral de US$ 500,000",
+    "points": 15,
+    "forces_edd": true
+   }
+  ],
+  "recommendation": "Debida diligencia reforzada: sustento documentario de fondos y aprobación de la gerencia."
+ },
+ "narrative": {
+  "perfil_profesional": "Mauricio Céspedes Lozano, 47 años, residente en Lima, declara ser empresario y gerente general de Transportes Andinos del Sur S.A.C. La ficha de empresa lo identifica como gerente general y accionista mayoritario de esa sociedad, mediana empresa de transporte de carga con 140 trabajadores, activa desde 2009 [1]. Según declaraciones atribuidas a su gerente, la flota pasó de 60 a 110 camiones en dos años en el contexto de la minería del sur [5]. Lo declarado coincide con las fuentes. No se cuenta con DNI en el expediente. No se detectaron homónimos. Una publicación en redes sobre el paro de transportistas [4] se registra solo como contexto, por identidad menos segura (nombre parcial) y relevancia nula.",
+  "exposicion_politica": "No se encontraron indicios de condición PEP. Ninguna fuente indica cargo público ni vínculo familiar o cercano con funcionarios. Su opinión gremial en redes no lo convierte en PEP.",
+  "noticias_adversas": "En julio de 2026, la Fiscalía contra la Criminalidad Organizada abrió investigación preliminar contra el cliente por presunto lavado de activos vinculado a minería ilegal en Madre de Dios; la defensa niega los cargos [2]. En agosto de 2026 se allanaron las oficinas de Transportes Andinos del Sur en Surco, con incautación de documentos contables; la investigación sigue en curso [3]. La investigación recae sobre la empresa que el cliente declara como origen de los fondos [2][3]. Sin coincidencias en listas OFAC SDN ni ONU (consulta 2026-11-15).",
+  "origen_riqueza_y_fondos": "El cliente declara US$ 900,000 (S/ 3,066,300), provenientes de dividendos de su empresa de transporte de carga. La titularidad y el crecimiento del negocio están respaldados por fuentes [1][5]. No se publican montos de utilidades ni dividendos. El modelo de patrimonio estima un rango plausible de S/ 1,762,510 a S/ 8,705,926; el monto declarado representa el 35% del tope y resulta coherente en magnitud. Sin embargo, la empresa generadora de los dividendos está bajo investigación por lavado de activos vinculado a minería ilegal [2][3], y su expansión se asocia a la minería del sur [5]. La coherencia cuantitativa no acredita la licitud de los fondos.",
+  "conclusion": "Riesgo alto (puntaje 85). Factores: dos noticias adversas sobre investigación fiscal por lavado de activos y allanamiento [2][3] (35 puntos cada una) y monto superior al umbral de US$ 500,000 (15 puntos, obliga debida diligencia reforzada). Se recomienda debida diligencia reforzada, sustento documentario de fondos y aprobación de la gerencia. Dado que la investigación afecta directamente la fuente declarada, se sugiere que el oficial de cumplimiento evalúe la aceptación de la relación y la pertinencia de un reporte de operación sospechosa.",
+  "documentos_a_solicitar": [
+   "Copia del DNI vigente",
+   "Estados financieros auditados de Transportes Andinos del Sur S.A.C. de los últimos tres ejercicios",
+   "Actas de junta de accionistas que aprueban la distribución de dividendos",
+   "Constancias de pago de dividendos y retenciones de impuesto a la renta (SUNAT)",
+   "Estados de cuenta bancarios que muestren la recepción de los dividendos y el origen de los US$ 900,000",
+   "Declaraciones juradas anuales de impuesto a la renta del cliente y de la empresa",
+   "Relación de principales clientes de la empresa, con detalle de contratos vinculados al sector minero del sur",
+   "Documentación del financiamiento de la expansión de flota (de 60 a 110 camiones)",
+   "Declaración del cliente y de su defensa sobre el estado de la investigación fiscal, con copia de las disposiciones fiscales disponibles",
+   "Partida registral y vigencia de poder de la empresa"
+  ]
+ },
+ "usage": {
+  "input_tokens": 8544,
+  "output_tokens": 3182,
+  "web_searches": 0,
+  "calls": [
+   "extraccion",
+   "redaccion"
+  ]
+ },
+ "seconds": 28.152106285095215,
+ "generated_at": "2026-11-15 18:32",
+ "amount_note": ""
+}

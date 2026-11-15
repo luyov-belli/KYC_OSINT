@@ -1,6 +1,7 @@
 """Pruebas sin API: reglas de riesgo, monto tope e informe Word con hallazgos armados a mano."""
 
 from kyc import llm, risk, sanctions, wealth
+from kyc import pipeline
 from kyc.pipeline import KycResult
 from kyc.report import to_docx
 from kyc.schemas import (EvidenceAssessment, Findings, KycNarrative, LiquidityEvent,
@@ -80,16 +81,42 @@ def test_strong_sanction_hit_is_critical():
     assert r.level == "crítico"
 
 
-def test_docx_builds():
-    p = ProfileInput(full_name="Persona Ficticia", age=48, amount=150_000)
-    f = make_findings(adverse=True)
+def make_result(amount=150_000, adverse=True) -> KycResult:
+    p = ProfileInput(full_name="Persona Ficticia", age=48, amount=amount)
+    f = make_findings(adverse=adverse)
     w = wealth.estimate(p, f.wealth)
-    res = KycResult(
+    return KycResult(
         profile=p, mode="sintético", hits=[], lists_date="2026-11-15",
         sources=[SourceDoc(id=i, url=f"https://ejemplo.pe/{i}", title=f"Fuente {i}") for i in (1, 2, 3)],
         dossier="", findings=f, wealth=w, risk=risk.assess(p, [], f, w),
         narrative=KycNarrative(perfil_profesional="a [1]", exposicion_politica="b", noticias_adversas="c [2]",
                                origen_riqueza_y_fondos="d", conclusion="e", documentos_a_solicitar=["f"]),
-        usage=llm.UsageTracker(), seconds=1.0)
-    data = to_docx(res)
+        usage=llm.UsageTracker(input_tokens=10, output_tokens=5, calls=["extraccion"]), seconds=1.0)
+
+
+def test_docx_builds():
+    data = to_docx(make_result())
     assert data[:2] == b"PK" and len(data) > 10_000
+
+
+def test_saved_result_round_trip(tmp_path):
+    res = make_result()
+    path = tmp_path / "r.json"
+    pipeline.save(res, path)
+    back = pipeline.load(path)
+    assert pipeline.to_dict(back) == pipeline.to_dict(res)
+    assert back.usage.cost_usd() == res.usage.cost_usd()
+    assert to_docx(back)[:2] == b"PK"
+
+
+def test_simulated_amount_recomputes_risk_without_llm():
+    res = make_result(amount=1_000, adverse=False)
+    assert res.wealth.coherence == "coherente"
+    big = pipeline.with_amount(res, 1_000_000, "USD")
+    assert big.wealth.coherence == "incoherente"
+    assert big.risk.dd_type == "reforzada"
+    assert big.risk.score > res.risk.score
+    assert big.wealth.tope_pen == res.wealth.tope_pen      # el tope no depende del monto
+    assert big.narrative is res.narrative and big.amount_note
+    assert pipeline.with_amount(res, 1_000, "USD") is res  # mismo monto: sin cambios
+    assert b"PK" == to_docx(big)[:2]

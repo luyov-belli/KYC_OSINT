@@ -1,0 +1,205 @@
+{
+ "profile": {
+  "full_name": "Óscar Benavente Ríos",
+  "dni": "20000003",
+  "age": 58,
+  "city": "Huancayo",
+  "employer": "Benavente Consultores E.I.R.L.",
+  "declared_occupation": "Consultor en gestión pública",
+  "amount": 350000.0,
+  "currency": "USD",
+  "declared_source_of_funds": "Ahorros de 30 años de carrera en el sector público y privado, y honorarios de consultoría",
+  "via_company": false,
+  "company_name": null,
+  "funds_from_abroad": false
+ },
+ "mode": "sintético",
+ "hits": [],
+ "lists_date": "2026-11-15",
+ "sources": [
+  {
+   "id": 1,
+   "url": "https://normas.ejemplo.pe/2019/01/resolucion-ejecutiva-regional-015",
+   "title": "Resolución Ejecutiva Regional que designa al Gerente General Regional",
+   "date": "2019-01-03",
+   "text": "Designar al señor Óscar Benavente Ríos, identificado con DNI 20000003, en el cargo de Gerente General Regional del Gobierno Regional de Junín."
+  },
+  {
+   "id": 2,
+   "url": "https://normas.ejemplo.pe/2022/12/resolucion-ejecutiva-regional-402",
+   "title": "Resolución que da por concluida la designación",
+   "date": "2022-12-30",
+   "text": "Dar por concluida, a partir del 31 de diciembre de 2022, la designación del señor Óscar Benavente Ríos como Gerente General Regional, dándosele las gracias por los servicios prestados."
+  },
+  {
+   "id": 3,
+   "url": "https://transparencia.ejemplo.pe/declaraciones/2022/benavente-rios",
+   "title": "Declaración jurada de ingresos, bienes y rentas 2022",
+   "date": "2022-04-15",
+   "text": "Benavente Ríos, Óscar. Remuneración mensual: S/ 15,600. Bienes declarados: un inmueble en Huancayo y un vehículo. Sin participación en empresas."
+  },
+  {
+   "id": 4,
+   "url": "https://empresas.ejemplo.pe/ruc/20000000003",
+   "title": "Benavente Consultores E.I.R.L. · ficha de empresa",
+   "date": "2026-10-20",
+   "text": "RUC 20000000003 (ficticio). Activa desde 2023. Titular-gerente: Óscar Benavente Ríos. Actividad: consultoría en gestión. Tamaño: microempresa."
+  },
+  {
+   "id": 5,
+   "url": "https://regional.ejemplo.pe/junin/2025/04/obras-transferencia",
+   "title": "Informe de transferencia de gestión del gobierno regional",
+   "date": "2025-04-08",
+   "text": "El informe de transferencia menciona a los gerentes generales del periodo 2019-2022, entre ellos Óscar Benavente Ríos, sin observaciones de control a su nombre."
+  }
+ ],
+ "dossier": "",
+ "findings": {
+  "identity_summary": "Óscar Benavente Ríos (DNI 20000003), 58 años, de Huancayo, fue Gerente General Regional del Gobierno Regional de Junín entre enero de 2019 y diciembre de 2022. Desde 2023 es titular-gerente de Benavente Consultores E.I.R.L., microempresa de consultoría en gestión, lo que coincide con lo declarado.",
+  "evidence": [
+   {
+    "source_id": 1,
+    "summary": "Resolución que lo designa, con DNI 20000003, como Gerente General Regional del Gobierno Regional de Junín.",
+    "category": "pep",
+    "source_type": "registro_oficial",
+    "identity_score": 1.0,
+    "identity_reason": "El DNI coincide exactamente.",
+    "relevance_score": 0.9,
+    "relevance_reason": "Documenta un cargo público prominente que determina la condición PEP.",
+    "risk_direction": "aumenta",
+    "date": "2019-01-03"
+   },
+   {
+    "source_id": 2,
+    "summary": "Resolución que da por concluida su designación como Gerente General Regional a partir del 31/12/2022.",
+    "category": "pep",
+    "source_type": "registro_oficial",
+    "identity_score": 0.95,
+    "identity_reason": "Mismo nombre y cargo que la fuente 1, que incluye el DNI.",
+    "relevance_score": 0.85,
+    "relevance_reason": "Fija el cese del cargo; al estar dentro de los últimos 5 años, mantiene la condición PEP.",
+    "risk_direction": "neutral",
+    "date": "2022-12-30"
+   },
+   {
+    "source_id": 3,
+    "summary": "Declaración jurada 2022: remuneración mensual de S/ 15,600, un inmueble en Huancayo y un vehículo, sin participación en empresas.",
+    "category": "patrimonio_negocio",
+    "source_type": "registro_oficial",
+    "identity_score": 0.9,
+    "identity_reason": "El nombre, la ciudad del inmueble y el periodo del cargo son consistentes.",
+    "relevance_score": 0.8,
+    "relevance_reason": "Permite contrastar el patrimonio y respalda los ingresos lícitos del sector público.",
+    "risk_direction": "reduce",
+    "date": "2022-04-15"
+   },
+   {
+    "source_id": 4,
+    "summary": "Ficha del RUC: Benavente Consultores E.I.R.L., activa desde 2023, con él como titular-gerente. Microempresa de consultoría en gestión.",
+    "category": "patrimonio_negocio",
+    "source_type": "registro_oficial",
+    "identity_score": 0.95,
+    "identity_reason": "Coincide con el empleador y la ocupación declarados.",
+    "relevance_score": 0.7,
+    "relevance_reason": "Respalda la fuente de honorarios de consultoría declarada.",
+    "risk_direction": "reduce",
+    "date": "2026-10-20"
+   },
+   {
+    "source_id": 5,
+    "summary": "El informe de transferencia de gestión lo menciona como gerente general 2019-2022, sin observaciones de control a su nombre.",
+    "category": "empleo_cargo",
+    "source_type": "registro_oficial",
+    "identity_score": 0.9,
+    "identity_reason": "El nombre, el cargo y el periodo coinciden.",
+    "relevance_score": 0.6,
+    "relevance_reason": "No registra observaciones de control, lo que mitiga el riesgo asociado al cargo.",
+    "risk_direction": "reduce",
+    "date": "2025-04-08"
+   }
+  ],
+  "pep": {
+   "is_pep": "si",
+   "relation": "titular",
+   "role": "Gerente General Regional del Gobierno Regional de Junín (2019-2022)",
+   "rationale": "Ejerció una función pública prominente hasta el 31/12/2022, dentro de la ventana de 5 años de la SBS. Requiere debida diligencia reforzada."
+  },
+  "wealth": {
+   "occupation_group": 1,
+   "occupation_label": "Ex alto funcionario regional; consultor en gestión pública",
+   "career_years": 30,
+   "seniority": "alta_direccion",
+   "business_owner": true,
+   "business_size": "micro",
+   "liquidity_events": [],
+   "rationale": "Su trayectoria en la alta dirección pública está documentada, con una remuneración de S/ 15,600 mensuales y un patrimonio modesto declarado en 2022. Desde 2023 opera una microempresa de consultoría. Los 30 años de carrera son declarados y no se verificaron en su totalidad. No hay eventos de liquidez publicados."
+  },
+  "homonyms_note": "Ninguno. Todas las fuentes son consistentes con el DNI 20000003."
+ },
+ "wealth": {
+  "declared_pen": 1192450.0,
+  "fx": 3.407,
+  "fx_source": "BCRP, venta SBS 12.Nov.26",
+  "labor_base": 362964.1327280653,
+  "labor_tope": 6008777.005753138,
+  "business_base": 60187.50000000001,
+  "business_tope": 401250.0,
+  "events_pen": 0,
+  "base_pen": 423151.6327280653,
+  "tope_pen": 6410027.005753138,
+  "ratio": 0.18602885743379088,
+  "coherence": "coherente",
+  "percentile_tope": "p99",
+  "career_years": 30,
+  "occupation": "Miembros del poder ejecutivo, legislativo, judicial y personal directivo de la administración pública y privada",
+  "assumptions": [
+   "Ingreso laboral: ENAHO 2024 (INEI), base p50, tope según seniority",
+   "Ahorro 10% (base) a 35% (tope), retorno real 4% anual",
+   "Tipo de cambio S/ 3.407 por US$ (BCRP, venta SBS 12.Nov.26)",
+   "Empresa micro: ventas Ley MYPE × margen 5-10 % × múltiplo 3-5 (UIT S/ 5,350)"
+  ]
+ },
+ "risk": {
+  "score": 40,
+  "level": "alto",
+  "dd_type": "reforzada",
+  "factors": [
+   {
+    "rule": "PEP",
+    "detail": "titular: Gerente General Regional del Gobierno Regional de Junín (2019-2022)",
+    "points": 40,
+    "forces_edd": true
+   }
+  ],
+  "recommendation": "Debida diligencia reforzada: sustento documentario de fondos y aprobación de la gerencia."
+ },
+ "narrative": {
+  "perfil_profesional": "Óscar Benavente Ríos (DNI 20000003), 58 años, reside en Huancayo. Fue designado Gerente General Regional del Gobierno Regional de Junín en enero de 2019 [1]. Su designación concluyó el 31/12/2022 [2]. El informe de transferencia de gestión lo registra como gerente general en el periodo 2019-2022 [5]. Desde 2023 es titular-gerente de Benavente Consultores E.I.R.L., microempresa de consultoría en gestión con RUC activo [4]. Esto coincide con el empleador y la ocupación declarados (consultor en gestión pública). Los 30 años de carrera son declarados por el cliente; solo el periodo 2019-2022 y la actividad desde 2023 están documentados.",
+  "exposicion_politica": "El cliente es PEP titular. Ejerció el cargo de Gerente General Regional del Gobierno Regional de Junín entre enero de 2019 y diciembre de 2022 [1][2]. El cese ocurrió el 31/12/2022 [2], dentro de la ventana de 5 años de la SBS, por lo que mantiene la condición PEP. Corresponde aplicar debida diligencia reforzada.",
+  "noticias_adversas": "No se encontraron noticias adversas. El informe de transferencia de gestión no registra observaciones de control a su nombre [5]. Sin coincidencias en listas OFAC SDN ni ONU (consulta del 2026-11-15). No se identificaron homónimos: todas las fuentes son consistentes con el DNI 20000003.",
+  "origen_riqueza_y_fondos": "El cliente propone invertir USD 350,000 (S/ 1,192,450), con fondos declarados como ahorros de 30 años de carrera en los sectores público y privado y honorarios de consultoría. Los fondos no provienen del exterior ni se canalizan a través de una empresa. Su declaración jurada 2022 consigna una remuneración mensual de S/ 15,600, un inmueble en Huancayo, un vehículo y ninguna participación en empresas [3]. La actividad de consultoría desde 2023 está respaldada por el RUC de su microempresa [4]. El rango de patrimonio estimado va de S/ 423,152 (base) a S/ 6,410,027 (tope plausible). El monto declarado equivale al 19% del tope, por lo que se considera coherente. No hay eventos de liquidez publicados. Se debe tener en cuenta que el patrimonio declarado en 2022 fue modesto [3] y que el monto supera la estimación base. Por eso, el sustento documentario de la acumulación de ahorros es necesario.",
+  "conclusion": "Nivel de riesgo: alto (puntaje 40). El factor determinante es la condición de PEP titular por el cargo de Gerente General Regional del Gobierno Regional de Junín (2019-2022) [1][2]. Como mitigantes, no registra observaciones de control [5], no presenta coincidencias en listas de sanciones y su actividad actual está documentada [4]. El monto es coherente con el tope plausible estimado. Se recomienda debida diligencia reforzada, con sustento documentario de fondos y aprobación de la gerencia.",
+  "documentos_a_solicitar": [
+   "Estados de cuenta bancarios de los últimos 3 a 5 años que muestren la acumulación de los ahorros",
+   "Certificados de trabajo o constancias de remuneraciones de la carrera pública y privada previa a 2019",
+   "Declaraciones juradas de ingresos, bienes y rentas de inicio y cese del cargo (2019 y 2022/2023)",
+   "Declaraciones anuales de impuesto a la renta de los últimos 3 años (rentas de cuarta/tercera categoría)",
+   "Estados financieros y comprobantes de pago o contratos de consultoría de Benavente Consultores E.I.R.L. desde 2023",
+   "Constancia del banco de origen de la cuenta desde la que se transferirán los fondos",
+   "Declaración jurada de origen de fondos firmada por el cliente",
+   "Declaración jurada de condición PEP con relación de parientes y colaboradores cercanos"
+  ]
+ },
+ "usage": {
+  "input_tokens": 8063,
+  "output_tokens": 2917,
+  "web_searches": 0,
+  "calls": [
+   "extraccion",
+   "redaccion"
+  ]
+ },
+ "seconds": 25.769932746887207,
+ "generated_at": "2026-11-15 18:31",
+ "amount_note": ""
+}

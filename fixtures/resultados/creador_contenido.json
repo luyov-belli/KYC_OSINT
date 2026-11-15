@@ -1,0 +1,213 @@
+{
+ "profile": {
+  "full_name": "Renzo Valdivia Achahui",
+  "dni": null,
+  "age": 33,
+  "city": "Lima",
+  "employer": "Valdivia Contenidos S.A.C.",
+  "declared_occupation": "Creador de contenido y gerente de su productora",
+  "amount": 120000.0,
+  "currency": "USD",
+  "declared_source_of_funds": "Ingresos por patrocinios, publicidad y servicios de producción de su empresa",
+  "via_company": false,
+  "company_name": null,
+  "funds_from_abroad": false
+ },
+ "mode": "sintético",
+ "hits": [],
+ "lists_date": "2026-11-15",
+ "sources": [
+  {
+   "id": 1,
+   "url": "https://noticias.ejemplo.pe/economia/2026/03/creadores-que-facturan",
+   "title": "Los creadores peruanos que ya facturan como pymes",
+   "date": "2026-03-14",
+   "text": "Renzo Valdivia Achahui, de 33 años, empezó con un canal de análisis de actualidad en 2017. Hoy su productora, Valdivia Contenidos S.A.C., tiene ocho trabajadores y contratos de patrocinio con dos bancos y una cadena de retail. Él estima ventas anuales cercanas a S/ 2 millones."
+  },
+  {
+   "id": 2,
+   "url": "https://redes.ejemplo.com/renzovaldivia/post/88213",
+   "title": "Publicación de Renzo Valdivia sobre el Congreso",
+   "date": "2026-09-02",
+   "text": "\"Este Congreso legisla para sí mismo. Si hubiera elecciones mañana, que se vayan todos.\" La publicación tuvo 40 mil reacciones."
+  },
+  {
+   "id": 3,
+   "url": "https://noticias.ejemplo.pe/politica/2026/10/debate-influencers",
+   "title": "Influencers opinan sobre la segunda vuelta",
+   "date": "2026-10-11",
+   "text": "El programa invitó a tres creadores de contenido, entre ellos Renzo Valdivia, a comentar los planes de gobierno. Valdivia aclaró que no milita en ningún partido ni tiene aspiraciones políticas."
+  },
+  {
+   "id": 4,
+   "url": "https://empresas.ejemplo.pe/ruc/20000000001",
+   "title": "Valdivia Contenidos S.A.C. · ficha de empresa",
+   "date": "2026-11-01",
+   "text": "RUC 20000000001 (ficticio). Activa y habida desde 2019. Actividad: producción de contenidos audiovisuales. Gerente general: Renzo Valdivia Achahui. Tamaño: pequeña empresa. Trabajadores declarados: 8."
+  },
+  {
+   "id": 5,
+   "url": "https://regional.ejemplo.pe/arequipa/2024/05/multa-municipal",
+   "title": "Municipalidad multa a comerciante por construcción sin licencia",
+   "date": "2024-05-20",
+   "text": "Renzo Valdivia, comerciante de 58 años del distrito de Cayma (Arequipa), fue multado por ampliar su local sin licencia de edificación."
+  },
+  {
+   "id": 6,
+   "url": "https://redes.ejemplo.com/renzovaldivia/post/90117",
+   "title": "Polémica por comentario de Renzo Valdivia sobre un futbolista",
+   "date": "2026-10-28",
+   "text": "Un comentario del streamer sobre la selección generó críticas en redes. Valdivia pidió disculpas en su siguiente transmisión."
+  }
+ ],
+ "dossier": "",
+ "findings": {
+  "identity_summary": "Renzo Valdivia Achahui, 33 años, residente en Lima, es creador de contenido y gerente general de Valdivia Contenidos S.A.C., productora audiovisual activa desde 2019, de tamaño pequeño y con 8 trabajadores. Sus ingresos provienen de patrocinios con bancos y retail, en línea con la fuente de fondos declarada. No se identifican cargos públicos ni procesos en su contra.",
+  "evidence": [
+   {
+    "source_id": 1,
+    "summary": "Nota económica que describe a Renzo Valdivia Achahui, de 33 años, como creador desde 2017 y dueño de una productora con 8 trabajadores y patrocinios de dos bancos y un retail. Él estima ventas anuales cercanas a S/ 2 millones.",
+    "category": "patrimonio_negocio",
+    "source_type": "medio",
+    "identity_score": 0.95,
+    "identity_reason": "Coinciden el nombre completo, la edad, la empresa y la ocupación.",
+    "relevance_score": 0.75,
+    "relevance_reason": "Respalda el origen legítimo de los fondos. La cifra de ventas es una estimación del propio cliente.",
+    "risk_direction": "reduce",
+    "date": "2026-03-14"
+   },
+   {
+    "source_id": 2,
+    "summary": "Publicación en redes con una opinión crítica sobre el Congreso.",
+    "category": "opinion_redes",
+    "source_type": "red_social_opinion",
+    "identity_score": 0.7,
+    "identity_reason": "La cuenta usa su nombre y es coherente con un creador de contenido de actualidad. No aparecen desambiguadores duros.",
+    "relevance_score": 0.05,
+    "relevance_reason": "Es una opinión política sin cargo público asociado.",
+    "risk_direction": "neutral",
+    "date": "2026-09-02"
+   },
+   {
+    "source_id": 3,
+    "summary": "Participó como creador invitado en un programa sobre la segunda vuelta. Declaró no militar en ningún partido ni tener aspiraciones políticas.",
+    "category": "otro",
+    "source_type": "medio",
+    "identity_score": 0.75,
+    "identity_reason": "Coinciden el nombre y la ocupación de creador de contenido.",
+    "relevance_score": 0.15,
+    "relevance_reason": "Ayuda a descartar la condición PEP. Por lo demás, no aporta riesgo.",
+    "risk_direction": "neutral",
+    "date": "2026-10-11"
+   },
+   {
+    "source_id": 4,
+    "summary": "Ficha de empresa de Valdivia Contenidos S.A.C.: activa y habida desde 2019, dedicada a la producción audiovisual. Figura como pequeña empresa con 8 trabajadores y con Renzo Valdivia Achahui como gerente general.",
+    "category": "patrimonio_negocio",
+    "source_type": "registro_oficial",
+    "identity_score": 0.95,
+    "identity_reason": "Coinciden el nombre completo y el empleador declarado.",
+    "relevance_score": 0.75,
+    "relevance_reason": "Es un cargo directivo documentado en un negocio operativo que sustenta los ingresos declarados.",
+    "risk_direction": "reduce",
+    "date": "2026-11-01"
+   },
+   {
+    "source_id": 5,
+    "summary": "Un comerciante de 58 años de Cayma (Arequipa) fue multado por ampliar su local sin licencia.",
+    "category": "sancion_o_proceso",
+    "source_type": "medio",
+    "identity_score": 0.05,
+    "identity_reason": "La edad (58 frente a 33), la ciudad y la ocupación son incompatibles: se trata de un homónimo.",
+    "relevance_score": 0.05,
+    "relevance_reason": "Es una infracción administrativa menor y corresponde a otra persona.",
+    "risk_direction": "neutral",
+    "date": "2024-05-20"
+   },
+   {
+    "source_id": 6,
+    "summary": "Un comentario del streamer sobre la selección generó críticas, y él pidió disculpas después.",
+    "category": "opinion_redes",
+    "source_type": "red_social_opinion",
+    "identity_score": 0.65,
+    "identity_reason": "Es coherente con su actividad de creador. Solo coincide el nombre de la cuenta.",
+    "relevance_score": 0.05,
+    "relevance_reason": "Es una polémica reputacional menor sin relación con LA/FT.",
+    "risk_direction": "neutral",
+    "date": "2026-10-28"
+   }
+  ],
+  "pep": {
+   "is_pep": "no",
+   "relation": "ninguna",
+   "role": null,
+   "rationale": "No hay evidencia de cargo público, propio ni de familiares o colaboradores. Sus opiniones políticas no lo convierten en PEP, y declaró no tener militancia ni aspiraciones políticas."
+  },
+  "wealth": {
+   "occupation_group": 1,
+   "occupation_label": "Gerente general de productora audiovisual y creador de contenido",
+   "career_years": 9,
+   "seniority": "alta_direccion",
+   "business_owner": true,
+   "business_size": "pequena",
+   "liquidity_events": [],
+   "rationale": "Su actividad de creador comenzó en 2017 y la empresa está activa desde 2019, con 8 trabajadores y patrocinios corporativos. Las ventas estimadas por él son de alrededor de S/ 2 millones anuales y conviene verificarlas con estados financieros. No se reportan eventos de liquidez."
+  },
+  "homonyms_note": "Fuente 5: Renzo Valdivia, comerciante de 58 años en Arequipa. Se descarta por la edad, la ciudad y la ocupación incompatibles."
+ },
+ "wealth": {
+  "declared_pen": 408840.0,
+  "fx": 3.407,
+  "fx_source": "BCRP, venta SBS 12.Nov.26",
+  "labor_base": 64921.216112020986,
+  "labor_tope": 1137584.353412049,
+  "business_base": 742312.5000000001,
+  "business_tope": 4547500.0,
+  "events_pen": 0,
+  "base_pen": 807233.7161120211,
+  "tope_pen": 5685084.353412049,
+  "ratio": 0.07191450022278459,
+  "coherence": "coherente",
+  "percentile_tope": "p99",
+  "career_years": 9,
+  "occupation": "Miembros del poder ejecutivo, legislativo, judicial y personal directivo de la administración pública y privada",
+  "assumptions": [
+   "Ingreso laboral: ENAHO 2024 (INEI), base p50, tope según seniority",
+   "Ahorro 10% (base) a 35% (tope), retorno real 4% anual",
+   "Tipo de cambio S/ 3.407 por US$ (BCRP, venta SBS 12.Nov.26)",
+   "Empresa pequena: ventas Ley MYPE × margen 5-10 % × múltiplo 3-5 (UIT S/ 5,350)"
+  ]
+ },
+ "risk": {
+  "score": 0,
+  "level": "bajo",
+  "dd_type": "simplificada",
+  "factors": [],
+  "recommendation": "Debida diligencia simplificada: perfil coherente con la información pública."
+ },
+ "narrative": {
+  "perfil_profesional": "Renzo Valdivia Achahui, de 33 años, es creador de contenido desde 2017 y dueño de una productora con 8 trabajadores [1]. Es gerente general de Valdivia Contenidos S.A.C., empresa activa y habida desde 2019, dedicada a la producción audiovisual y registrada como pequeña empresa [4]. Tiene patrocinios de dos bancos y un retail [1]. No se cuenta con DNI en el expediente.",
+  "exposicion_politica": "No se encontró evidencia de cargo público propio ni de familiares o colaboradores cercanos. No se califica como PEP. Sus publicaciones con opiniones políticas, revisadas como contexto, no constituyen exposición política.",
+  "noticias_adversas": "No se encontraron noticias adversas relevantes sobre el cliente. Sin coincidencias en las listas OFAC SDN ni ONU (consulta del 2026-11-15). Se deja constancia de un homónimo: la fuente [5] refiere a un comerciante de 58 años de Cayma (Arequipa) multado por una construcción sin licencia. Se descarta por la edad, la ciudad y la ocupación incompatibles.",
+  "origen_riqueza_y_fondos": "El cliente declara que los fondos (USD 120,000, equivalentes a S/ 408,840) provienen de patrocinios, publicidad y servicios de producción de su empresa. Esto es consistente con los patrocinios corporativos reportados [1] y con su cargo de gerente general en una empresa operativa desde 2019 [4]. El cliente estima ventas anuales cercanas a S/ 2 millones [1]. La cifra es una declaración propia y no está verificada. El monto tope plausible calculado es S/ 5,685,084 y el monto declarado representa el 7 % de dicho tope. El resultado es coherente. No se reportan eventos de liquidez. Los fondos no provienen del exterior ni se canalizan a través de una empresa.",
+  "conclusion": "Nivel de riesgo: bajo (puntaje 0). Se recomienda debida diligencia simplificada: el perfil es coherente con la información pública [1][4]. Se sugiere verificar las ventas estimadas con estados financieros y completar el DNI en el expediente.",
+  "documentos_a_solicitar": [
+   "Copia del DNI",
+   "Estados financieros de Valdivia Contenidos S.A.C. del último ejercicio",
+   "Ficha RUC o vigencia de poder que acredite el cargo de gerente general",
+   "Estados de cuenta bancarios que muestren el origen de los USD 120,000"
+  ]
+ },
+ "usage": {
+  "input_tokens": 8601,
+  "output_tokens": 2707,
+  "web_searches": 0,
+  "calls": [
+   "extraccion",
+   "redaccion"
+  ]
+ },
+ "seconds": 25.698439359664917,
+ "generated_at": "2026-11-15 18:30",
+ "amount_note": ""
+}

@@ -37,6 +37,8 @@ def to_docx(r: KycResult) -> bytes:
         f"Generado por KYC OSINT el {r.generated_at} (modo {r.mode}). Borrador para revisión del oficial de "
         "cumplimiento: no constituye una decisión de aceptación. Solo fuentes públicas.")
     note.runs[0].italic = True
+    if r.amount_note:
+        doc.add_paragraph().add_run(r.amount_note).bold = True
 
     doc.add_heading("1. Identificación del cliente", level=1)
     _table(doc, [

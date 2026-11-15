@@ -1,8 +1,10 @@
 """KYC OSINT: app de Streamlit (sesión 05, dashboards).
 
 Modo sintético: abierto; usa personas ficticias de `fixtures/` y no busca en la web.
+Sus resultados están precalculados en `fixtures/resultados/`: mostrarlos no consume API.
 Modo en vivo: protegido con código de acceso; busca en fuentes públicas reales.
 Los informes en vivo no se guardan en disco.
+Simular otro monto recalcula tope y riesgo en Python, sin volver a llamar al modelo.
 """
 
 from __future__ import annotations
@@ -25,6 +27,7 @@ load_dotenv()
 st.set_page_config(page_title="KYC OSINT", page_icon="🔎", layout="wide")
 
 FIXTURES = Path(__file__).parent / "fixtures"
+SAVED = FIXTURES / "resultados"
 MAX_LIVE_RUNS = 5
 LEVEL_COLORS = {"bajo": "#1e7b34", "medio": "#b26b00", "alto": "#c62828", "crítico": "#8b0000"}
 CLASS_COLORS = {"considerada": "#c62828", "contexto": "#7a7a7a", "descartada": "#9ecae1"}
@@ -59,9 +62,16 @@ def load_personas() -> dict[str, dict]:
     return personas
 
 
+@st.cache_data(show_spinner=False)
+def load_saved(persona_id: str) -> pipeline.KycResult | None:
+    """Resultado precalculado con `scripts/eval_synthetic.py` (US$ 0 al mostrarlo)."""
+    path = SAVED / f"{persona_id}.json"
+    return pipeline.load(path) if path.exists() else None
+
+
 @st.cache_data(show_spinner=False, max_entries=20)
 def run_synthetic(persona_id: str) -> pipeline.KycResult:
-    """Cada persona sintética se calcula una vez por servidor (ahorra tokens)."""
+    """Respaldo si falta el resultado guardado: se calcula una vez por servidor."""
     persona = load_personas()[persona_id]
     return pipeline.run(
         ProfileInput(**persona["profile"]), get_client(),
@@ -95,9 +105,8 @@ with st.sidebar:
     st.caption(f"Umbrales: identidad ≥ {risk.IDENTITY_MIN}, relevancia ≥ {risk.RELEVANCE_MIN}, "
                f"homónimo < {risk.HOMONYM_MAX}")
 
-if not secret("ANTHROPIC_API_KEY"):
-    st.error("Falta `ANTHROPIC_API_KEY` (en `.env` o en los secrets de Streamlit).")
-    st.stop()
+HAS_KEY = bool(secret("ANTHROPIC_API_KEY"))
+NO_KEY_MSG = "Falta `ANTHROPIC_API_KEY` (en `.env` o en los secrets de Streamlit)."
 
 warm_lists()
 result: pipeline.KycResult | None = None
@@ -113,14 +122,25 @@ if not live:
         st.json(persona["profile"])
         st.dataframe(pd.DataFrame(persona["sources"])[["id", "title", "url", "date"]], hide_index=True)
     if st.button("Generar KYC", type="primary"):
-        with st.status("Analizando…", expanded=True) as status:
-            try:
-                result = run_synthetic(pid)
-                status.update(label=f"Listo en {result.seconds:.0f} s", state="complete")
-            except RefusalError as e:
-                status.update(label=str(e), state="error")
+        saved = load_saved(pid)
+        if saved is not None:
+            result = saved
+            st.success(f"Resultado guardado en el repo: se generó el {saved.generated_at} en {saved.seconds:.0f} s "
+                       f"por US$ {saved.usage.cost_usd():.2f}. Mostrarlo de nuevo no consume API.")
+        elif not HAS_KEY:
+            st.error(NO_KEY_MSG)
+        else:
+            with st.status("Analizando…", expanded=True) as status:
+                try:
+                    result = run_synthetic(pid)
+                    status.update(label=f"Listo en {result.seconds:.0f} s", state="complete")
+                except RefusalError as e:
+                    status.update(label=str(e), state="error")
 elif not unlocked:
     st.warning("Ingresa el código de acceso en la barra lateral para usar el modo en vivo.")
+    st.stop()
+elif not HAS_KEY:
+    st.error(NO_KEY_MSG)
     st.stop()
 else:
     with st.form("perfil"):
@@ -162,14 +182,29 @@ else:
 
 if result is not None:
     st.session_state["result"] = result
-result = st.session_state.get("result")
-if result is None:
+    st.session_state["result_ver"] = st.session_state.get("result_ver", 0) + 1
+base = st.session_state.get("result")
+if base is None:
     st.stop()
 
 # ---------------- Resultados ----------------
-r, w = result.risk, result.wealth
 st.divider()
-st.subheader(f"{result.profile.full_name} · modo {result.mode}")
+st.subheader(f"{base.profile.full_name} · modo {base.mode}")
+
+# Simular otro monto: tope, coherencia, riesgo y DD se recalculan en Python (US$ 0).
+ver = st.session_state.get("result_ver", 0)
+s1, s2, s3 = st.columns([2, 1, 3])
+sim_amount = s1.number_input("Monto declarado (simular)", min_value=0.0, value=float(base.profile.amount),
+                             step=50_000.0, format="%.0f", key=f"sim_amount_{ver}")
+sim_currency = s2.selectbox("Moneda", ["USD", "PEN"], index=["USD", "PEN"].index(base.profile.currency),
+                            key=f"sim_currency_{ver}")
+s3.caption("Cambia el monto para ver cómo se mueven el tope, la coherencia y el riesgo. Se recalcula con las "
+           "reglas en Python, sin volver a llamar al modelo: no cuesta API.")
+result = pipeline.with_amount(base, sim_amount, sim_currency)
+if result.amount_note:
+    st.warning(result.amount_note)
+
+r, w = result.risk, result.wealth
 m1, m2, m3, m4, m5 = st.columns(5)
 m1.markdown(f"<div style='font-size:0.85rem'>Riesgo</div><div style='font-size:1.8rem;font-weight:700;"
             f"color:{LEVEL_COLORS.get(r.level, '#000')}'>{r.level.upper()}</div>", unsafe_allow_html=True)

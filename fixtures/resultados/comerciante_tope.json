@@ -1,0 +1,173 @@
+{
+ "profile": {
+  "full_name": "Gladys Huamán Ccori",
+  "dni": null,
+  "age": 36,
+  "city": "Cusco",
+  "employer": "Minimarket Wayna (persona natural con negocio)",
+  "declared_occupation": "Comerciante, dueña de un minimarket",
+  "amount": 1200000.0,
+  "currency": "USD",
+  "declared_source_of_funds": "Ahorros del negocio",
+  "via_company": false,
+  "company_name": null,
+  "funds_from_abroad": false
+ },
+ "mode": "sintético",
+ "hits": [],
+ "lists_date": "2026-11-15",
+ "sources": [
+  {
+   "id": 1,
+   "url": "https://regional.ejemplo.pe/cusco/2025/09/feria-emprendedoras",
+   "title": "Feria de emprendedoras reúne a 120 negocios en Cusco",
+   "date": "2025-09-14",
+   "text": "Entre las expositoras estuvo Gladys Huamán Ccori, de 35 años, quien abrió su minimarket Wayna en Wanchaq en 2016 y hoy emplea a tres personas."
+  },
+  {
+   "id": 2,
+   "url": "https://empresas.ejemplo.pe/ruc/10000000005",
+   "title": "Huamán Ccori Gladys · ficha de contribuyente",
+   "date": "2026-10-15",
+   "text": "RUC 10000000005 (ficticio). Persona natural con negocio, activa y habida desde 2016. Actividad: venta minorista de abarrotes. Régimen MYPE tributario. Tamaño: microempresa."
+  },
+  {
+   "id": 3,
+   "url": "https://redes.ejemplo.com/vecinoswanchaq/post/3321",
+   "title": "Grupo vecinal de Wanchaq recomienda negocios del barrio",
+   "date": "2026-05-02",
+   "text": "Vecinos recomiendan el minimarket de la señora Gladys por sus precios y por fiar a los clientes de siempre."
+  }
+ ],
+ "dossier": "",
+ "findings": {
+  "identity_summary": "Gladys Huamán Ccori parece ser una comerciante de Cusco (Wanchaq), titular como persona natural con negocio del minimarket Wayna, abierto en 2016, con tres empleados y registrada como microempresa en régimen MYPE. No se encontraron vínculos con cargos públicos ni noticias adversas.",
+  "evidence": [
+   {
+    "source_id": 1,
+    "summary": "Nota de medio regional que la menciona como expositora en una feria de emprendedoras; indica 35 años, que abrió el minimarket Wayna en Wanchaq en 2016 y que emplea a tres personas.",
+    "category": "patrimonio_negocio",
+    "source_type": "medio",
+    "identity_score": 0.95,
+    "identity_reason": "Coinciden nombre completo, ciudad (Cusco), nombre del negocio (Wayna) y ocupación; la edad de 35 años en 2025 es compatible con 36 actuales.",
+    "relevance_score": 0.6,
+    "relevance_reason": "Documenta la antigüedad y escala del negocio, lo que respalda la fuente de fondos declarada.",
+    "risk_direction": "reduce",
+    "date": "2025-09-14"
+   },
+   {
+    "source_id": 2,
+    "summary": "Ficha de contribuyente: persona natural con negocio, activa y habida desde 2016, venta minorista de abarrotes, régimen MYPE tributario, microempresa.",
+    "category": "patrimonio_negocio",
+    "source_type": "registro_oficial",
+    "identity_score": 0.85,
+    "identity_reason": "Coinciden nombre completo, actividad y año de inicio (2016) con la fuente 1; la ficha no muestra ciudad ni DNI.",
+    "relevance_score": 0.7,
+    "relevance_reason": "Registro oficial que confirma actividad comercial formal y su tamaño, relevante para el origen de los fondos.",
+    "risk_direction": "reduce",
+    "date": "2026-10-15"
+   },
+   {
+    "source_id": 3,
+    "summary": "Publicación de grupo vecinal de Wanchaq que recomienda el minimarket de 'la señora Gladys' por precios y por fiar a clientes habituales.",
+    "category": "opinion_redes",
+    "source_type": "red_social_opinion",
+    "identity_score": 0.6,
+    "identity_reason": "Coincide barrio y tipo de negocio, pero solo menciona el nombre de pila.",
+    "relevance_score": 0.15,
+    "relevance_reason": "Opinión vecinal; solo corrobora débilmente que el negocio opera.",
+    "risk_direction": "neutral",
+    "date": "2026-05-02"
+   }
+  ],
+  "pep": {
+   "is_pep": "no",
+   "relation": "ninguna",
+   "role": null,
+   "rationale": "Ninguna fuente indica cargo público propio ni vínculo familiar o de colaboración con funcionarios."
+  },
+  "wealth": {
+   "occupation_group": 5,
+   "occupation_label": "Comerciante minorista, dueña de minimarket de abarrotes",
+   "career_years": 10,
+   "seniority": "senior",
+   "business_owner": true,
+   "business_size": "micro",
+   "liquidity_events": [],
+   "rationale": "Negocio propio desde 2016 (fuentes 1 y 2), microempresa en régimen MYPE con tres empleados. Coherente con ahorros del negocio de escala modesta; no se publican montos ni eventos de liquidez."
+  },
+  "homonyms_note": "ninguno"
+ },
+ "wealth": {
+  "declared_pen": 4088400.0,
+  "fx": 3.407,
+  "fx_source": "BCRP, venta SBS 12.Nov.26",
+  "labor_base": 16189.430569611306,
+  "labor_tope": 159955.3922395281,
+  "business_base": 60187.50000000001,
+  "business_tope": 401250.0,
+  "events_pen": 0,
+  "base_pen": 76376.93056961132,
+  "tope_pen": 561205.3922395281,
+  "ratio": 7.285033352379176,
+  "coherence": "incoherente",
+  "percentile_tope": "p95",
+  "career_years": 10,
+  "occupation": "Trabajadores de los servicios y vendedores de comercios y mercados",
+  "assumptions": [
+   "Ingreso laboral: ENAHO 2024 (INEI), base p50, tope según seniority",
+   "Ahorro 10% (base) a 35% (tope), retorno real 4% anual",
+   "Tipo de cambio S/ 3.407 por US$ (BCRP, venta SBS 12.Nov.26)",
+   "Empresa micro: ventas Ley MYPE × margen 5-10 % × múltiplo 3-5 (UIT S/ 5,350)"
+  ]
+ },
+ "risk": {
+  "score": 50,
+  "level": "alto",
+  "dd_type": "reforzada",
+  "factors": [
+   {
+    "rule": "Origen de la riqueza",
+    "detail": "El monto declarado es 7.3× el tope plausible (S/ 561,205)",
+    "points": 35,
+    "forces_edd": false
+   },
+   {
+    "rule": "Monto",
+    "detail": "US$ 1,200,000 supera el umbral de US$ 500,000",
+    "points": 15,
+    "forces_edd": true
+   }
+  ],
+  "recommendation": "Debida diligencia reforzada: sustento documentario de fondos y aprobación de la gerencia."
+ },
+ "narrative": {
+  "perfil_profesional": "Gladys Huamán Ccori es comerciante en Cusco (Wanchaq). Es titular, como persona natural con negocio, del minimarket Wayna, abierto en 2016, que emplea a tres personas [1]. Figura como contribuyente activa y habida desde 2016, con actividad de venta minorista de abarrotes, en régimen MYPE tributario y categoría microempresa [2]. Un medio regional la mencionó como expositora en una feria de emprendedoras en 2025 [1]. Una publicación vecinal sobre el negocio no supera el umbral de relevancia y no se usa como sustento.",
+  "exposicion_politica": "No se encontraron indicios de condición PEP. Ninguna fuente revisada indica cargo público propio ni vínculo familiar o de colaboración con funcionarios. Sin coincidencias en listas OFAC SDN ni ONU (consulta del 2026-11-15).",
+  "noticias_adversas": "No se encontraron noticias adversas. No se identificaron homónimos.",
+  "origen_riqueza_y_fondos": "La clienta declara aportar US$ 1,200,000 (S/ 4,088,400 al tipo de cambio de S/ 3.407) provenientes de ahorros del negocio. Las fuentes confirman un negocio formal desde 2016 [1][2], pero de escala micro, con tres empleados [1] y régimen MYPE [2]. No se encontraron montos publicados ni eventos de liquidez. Según el modelo de estimación (ingresos ENAHO 2024, tasas de ahorro de 10 % a 35 % y valorización de microempresa), el patrimonio plausible se ubica entre S/ 76,377 y S/ 561,205. El monto declarado equivale a 7.29 veces el tope plausible. La coherencia entre monto y perfil se califica como incoherente.",
+  "conclusion": "Nivel de riesgo: alto (puntaje 50). Factores: origen de la riqueza, con un monto declarado 7.3 veces superior al tope plausible (35 puntos), y monto superior al umbral de US$ 500,000 (15 puntos; obliga a debida diligencia reforzada). La identidad y la actividad comercial están respaldadas [1][2] y no hay hallazgos PEP, sanciones ni noticias adversas. Sin embargo, la escala del negocio no explica el monto. Se recomienda debida diligencia reforzada, con sustento documentario de fondos y aprobación de la gerencia antes de aceptar la relación. Nota: el DNI no consta en el expediente.",
+  "documentos_a_solicitar": [
+   "Copia del DNI vigente",
+   "Ficha RUC actualizada del negocio",
+   "Declaraciones juradas anuales de impuesto a la renta de los últimos 5 años",
+   "Estados de cuenta bancarios de los últimos 12 a 24 meses que muestren la acumulación de los fondos",
+   "Registro de ventas y compras o libros contables del minimarket Wayna",
+   "Sustento de cualquier otra fuente de patrimonio (herencias, venta de inmuebles, donaciones, préstamos u otros ingresos) que explique la diferencia con el tope plausible",
+   "Documentación de la cuenta de origen de los fondos a transferir",
+   "Declaración jurada de origen de fondos firmada"
+  ]
+ },
+ "usage": {
+  "input_tokens": 7128,
+  "output_tokens": 2253,
+  "web_searches": 0,
+  "calls": [
+   "extraccion",
+   "redaccion"
+  ]
+ },
+ "seconds": 22.10428524017334,
+ "generated_at": "2026-11-15 18:32",
+ "amount_note": ""
+}

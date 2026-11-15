@@ -2,7 +2,9 @@
 
 Para cada persona compara lo que sale del pipeline con lo esperado:
 nivel de riesgo, tipo de DD, condición PEP y homónimos descartados.
-Escribe el resumen en `docs/eval_sinteticos.md` (son datos ficticios).
+Escribe el resumen en `docs/eval_sinteticos.md` y guarda cada resultado en
+`fixtures/resultados/<id>.json`: la app los muestra desde ahí sin llamar a la
+API (son datos ficticios, se pueden versionar).
 
 Uso:  uv run python scripts/eval_synthetic.py
 """
@@ -46,6 +48,7 @@ def main() -> None:
                      f"{res.wealth.ratio:.2f}" if res.wealth.ratio is not None else "s/d",
                      ", ".join(k for k, v in checks.items() if not v) or "—",
                      "✅" if ok else "❌", f"{res.usage.cost_usd():.3f}", f"{res.seconds:.0f}"))
+        pipeline.save(res, ROOT / "fixtures" / "resultados" / f"{p['id']}.json")
         print(rows[-1])
 
     lines = [
