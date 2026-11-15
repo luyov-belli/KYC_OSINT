@@ -114,7 +114,7 @@ def extract_findings(client: anthropic.Anthropic, profile: ProfileInput, sources
         max_tokens=16000,
         betas=BETAS,
         fallbacks=FALLBACKS,
-        output_config={"effort": "medium"},
+        output_config={"effort": "low"},
         system=EXTRACT_SYSTEM,
         messages=[{"role": "user", "content": prompt}],
         output_format=Findings,

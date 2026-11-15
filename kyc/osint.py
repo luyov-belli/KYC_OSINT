@@ -16,8 +16,10 @@ import anthropic
 from .llm import BETAS, FALLBACKS, MODEL, UsageTracker, _check
 from .schemas import ProfileInput, SourceDoc
 
-MAX_SEARCHES = 8
-MAX_FETCHES = 3
+# Calibrado para que un informe en vivo tome ~1 minuto (el demo dura 2).
+MAX_SEARCHES = 5
+MAX_FETCHES = 1
+MAX_SOURCES = 15   # fuentes que pasan a la extracción: primero las citadas
 
 PERU_DOMAINS = [
     "infogob.jne.gob.pe (historial político y candidaturas)",
@@ -30,7 +32,7 @@ PERU_DOMAINS = [
 RESEARCH_SYSTEM = """Eres investigador OSINT de un área de cumplimiento (KYC/PLAFT) en Perú.
 Investigas a un posible cliente usando SOLO fuentes públicas, para un borrador de debida diligencia.
 
-Qué buscar (haz entre 5 y 8 búsquedas, en español, siempre con contexto Perú):
+Qué buscar (como máximo 5 búsquedas, en español, siempre con contexto Perú; combina temas en una misma consulta):
 1. Empleo y cargos actuales y pasados; empresa y puesto.
 2. Cargos públicos o políticos (PEP), propios o de familiares cercanos.
 3. Noticias adversas: lavado de activos, corrupción, fraude, evasión, investigaciones fiscales o procesos judiciales.
@@ -40,7 +42,8 @@ Qué buscar (haz entre 5 y 8 búsquedas, en español, siempre con contexto Perú
 Reglas:
 - Usa los desambiguadores para separar homónimos. Si aparece un homónimo con antecedentes, regístralo como homónimo.
 - No inventes. Si no encuentras algo, dilo.
-- Al final escribe notas breves: una línea por hallazgo, con la URL de donde sale."""
+- Al final escribe notas breves (máximo 12 líneas): una línea por hallazgo, con la URL de donde sale.
+  No redactes un informe ni una conclusión: eso lo hace otro paso."""
 
 
 def research_queries(p: ProfileInput) -> list[str]:
@@ -70,9 +73,9 @@ def research(client: anthropic.Anthropic, profile: ProfileInput,
         + "\n\nFuentes peruanas útiles:\n- " + "\n- ".join(PERU_DOMAINS)
     )
     tools = [
-        {"type": "web_search_20260209", "name": "web_search", "max_uses": MAX_SEARCHES,
-         "user_location": {"type": "approximate", "country": "PE", "city": "Lima",
-                           "timezone": "America/Lima"}},
+        # Sin user_location: la búsqueda no acepta PE como país. El contexto peruano
+        # va en las consultas y en la lista de dominios.
+        {"type": "web_search_20260209", "name": "web_search", "max_uses": MAX_SEARCHES},
         {"type": "web_fetch_20260209", "name": "web_fetch", "max_uses": MAX_FETCHES},
     ]
     user_msg = {"role": "user", "content": prompt}
@@ -87,7 +90,7 @@ def research(client: anthropic.Anthropic, profile: ProfileInput,
             max_tokens=16000,
             betas=BETAS,
             fallbacks=FALLBACKS,
-            output_config={"effort": "medium"},
+            output_config={"effort": "low"},
             system=RESEARCH_SYSTEM,
             tools=tools,
             messages=messages,
@@ -99,11 +102,16 @@ def research(client: anthropic.Anthropic, profile: ProfileInput,
         _check(resp)
         break
 
-    return _collect_sources(content_blocks), _collect_notes(content_blocks)
+    notes = _collect_notes(content_blocks)
+    return _collect_sources(content_blocks, notes), notes
 
 
-def _collect_sources(blocks: list) -> list[SourceDoc]:
-    """Numera cada URL única que devolvió el buscador o que se citó en el texto."""
+def _collect_sources(blocks: list, notes: str = "") -> list[SourceDoc]:
+    """Numera las URLs únicas que devolvió el buscador o que se citaron en el texto.
+
+    Pasan a la extracción como máximo MAX_SOURCES: primero las que el
+    investigador citó o mencionó en sus notas, luego el resto en orden.
+    """
     by_url: dict[str, SourceDoc] = {}
 
     def add(url: str, title: str, date: str | None = None, text: str = "") -> None:
@@ -130,7 +138,13 @@ def _collect_sources(blocks: list) -> list[SourceDoc]:
         elif btype == "text":
             for c in getattr(block, "citations", None) or []:
                 add(getattr(c, "url", ""), getattr(c, "title", ""), None, getattr(c, "cited_text", "") or "")
-    return list(by_url.values())
+    docs = list(by_url.values())
+    used = [d for d in docs if d.text or d.url in notes]
+    rest = [d for d in docs if d not in used]
+    kept = (used + rest)[:MAX_SOURCES]
+    for i, d in enumerate(kept, start=1):
+        d.id = i
+    return kept
 
 
 def _collect_notes(blocks: list) -> str:

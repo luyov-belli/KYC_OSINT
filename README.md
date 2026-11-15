@@ -88,7 +88,11 @@ flowchart LR
 
 - **Quién paga:** boutiques de wealth management, SAF, SAB y family offices (el área comercial o la de compliance).
 - **Precio:** _preliminar, a validar en las conversaciones:_ **S/ 49 por informe**, o **S/ 990 al mes** con 30 informes.
-- **Costo por informe:** _TODO con la evaluación:_ US$ X en tokens + búsquedas (medido con `usage` de la API; ver [`docs/eval_sinteticos.md`](docs/eval_sinteticos.md)). Servidor: S/ 0 en Streamlit Community Cloud.
+- **Costo por informe (medido con `usage` de la API):**
+  - **En vivo:** ~US$ 0.43 (≈ S/ 1.5). Son 5 búsquedas web (US$ 0.05), ~51 mil tokens de entrada y ~9 mil de salida con Claude Opus 5.5. Tarda entre 75 y 95 s.
+  - **Sintético:** ~US$ 0.09 por informe (sin búsqueda web) y ~25 s ([evaluación](docs/eval_sinteticos.md): 5/5 casos correctos).
+  - **Servidor:** S/ 0 en Streamlit Community Cloud.
+  - **Margen bruto:** con S/ 49 por informe, el costo variable es ~3 % del precio.
 - **Qué sigue:** piloto en mi firma, plantilla de KYC de cada cliente, más fuentes peruanas (Poder Judicial, SUNARP con convenio) e historial de monitoreo.
 
 ## 8. Herramientas del curso
