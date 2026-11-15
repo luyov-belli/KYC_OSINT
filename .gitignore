@@ -1,0 +1,16 @@
+# Secretos: nunca al repo
+.env
+.streamlit/secrets.toml
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+
+# Datos descargados o generados (microdatos ENAHO, listas de sanciones en caché)
+datos/
+data/cache/
+
+# Informes generados: pueden contener datos de personas reales
+outputs/
