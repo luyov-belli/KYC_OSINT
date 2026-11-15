@@ -1,0 +1,24 @@
+{
+  "id": "comerciante_tope",
+  "label": "5 · Comerciante formal que declara muy por encima de su tope (pedir sustento)",
+  "description": "Negocio real y formal, sin noticias adversas, pero el monto declarado multiplica el tope plausible de su perfil. El agente debe pedir sustento documentario, no acusar.",
+  "expected": {"risk_levels": ["alto"], "dd": ["reforzada"], "pep": "no", "discard_ids": []},
+  "profile": {
+    "full_name": "Gladys Huamán Ccori",
+    "age": 36,
+    "city": "Cusco",
+    "declared_occupation": "Comerciante, dueña de un minimarket",
+    "employer": "Minimarket Wayna (persona natural con negocio)",
+    "amount": 1200000,
+    "currency": "USD",
+    "declared_source_of_funds": "Ahorros del negocio"
+  },
+  "sources": [
+    {"id": 1, "url": "https://regional.ejemplo.pe/cusco/2025/09/feria-emprendedoras", "title": "Feria de emprendedoras reúne a 120 negocios en Cusco", "date": "2025-09-14",
+     "text": "Entre las expositoras estuvo Gladys Huamán Ccori, de 35 años, quien abrió su minimarket Wayna en Wanchaq en 2016 y hoy emplea a tres personas."},
+    {"id": 2, "url": "https://empresas.ejemplo.pe/ruc/10000000005", "title": "Huamán Ccori Gladys · ficha de contribuyente", "date": "2026-10-15",
+     "text": "RUC 10000000005 (ficticio). Persona natural con negocio, activa y habida desde 2016. Actividad: venta minorista de abarrotes. Régimen MYPE tributario. Tamaño: microempresa."},
+    {"id": 3, "url": "https://redes.ejemplo.com/vecinoswanchaq/post/3321", "title": "Grupo vecinal de Wanchaq recomienda negocios del barrio", "date": "2026-05-02",
+     "text": "Vecinos recomiendan el minimarket de la señora Gladys por sus precios y por fiar a los clientes de siempre."}
+  ]
+}

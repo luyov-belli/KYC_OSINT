@@ -1,0 +1,28 @@
+{
+  "id": "investigacion_la",
+  "label": "4 · Empresario con investigación fiscal por lavado (riesgo alto)",
+  "description": "Empresa real y mediana, pero con una investigación preliminar por lavado de activos que lo identifica por nombre y empresa. Debe subir a riesgo alto con DD reforzada.",
+  "expected": {"risk_levels": ["alto", "crítico"], "dd": ["reforzada"], "pep": "no", "discard_ids": []},
+  "profile": {
+    "full_name": "Mauricio Céspedes Lozano",
+    "age": 47,
+    "city": "Lima",
+    "declared_occupation": "Empresario, gerente general",
+    "employer": "Transportes Andinos del Sur S.A.C.",
+    "amount": 900000,
+    "currency": "USD",
+    "declared_source_of_funds": "Dividendos de su empresa de transporte de carga"
+  },
+  "sources": [
+    {"id": 1, "url": "https://empresas.ejemplo.pe/ruc/20000000004", "title": "Transportes Andinos del Sur S.A.C. · ficha de empresa", "date": "2026-10-02",
+     "text": "RUC 20000000004 (ficticio). Activa desde 2009. Gerente general y accionista mayoritario: Mauricio Céspedes Lozano. Actividad: transporte de carga por carretera. Tamaño: mediana empresa. 140 trabajadores."},
+    {"id": 2, "url": "https://noticias.ejemplo.pe/judiciales/2026/07/fiscalia-lavado-transportes", "title": "Fiscalía investiga a empresa de transportes por presunto lavado de activos", "date": "2026-07-22",
+     "text": "La Fiscalía Especializada contra la Criminalidad Organizada abrió investigación preliminar contra Mauricio Céspedes Lozano, gerente de Transportes Andinos del Sur S.A.C., por presunto lavado de activos vinculado a operaciones de minería ilegal en Madre de Dios. La defensa niega los cargos."},
+    {"id": 3, "url": "https://noticias.ejemplo.pe/judiciales/2026/08/allanamiento-surco", "title": "Allanan oficinas de transportista investigado", "date": "2026-08-05",
+     "text": "Agentes de la fiscalía allanaron las oficinas de Transportes Andinos del Sur en Surco e incautaron documentos contables. La investigación preliminar sigue en curso."},
+    {"id": 4, "url": "https://redes.ejemplo.com/mcespedes/post/5521", "title": "Publicación de Mauricio Céspedes sobre el paro de transportistas", "date": "2026-09-10",
+     "text": "\"Los transportistas formales pagamos impuestos y nadie nos protege de la extorsión.\""},
+    {"id": 5, "url": "https://noticias.ejemplo.pe/economia/2024/03/transporte-carga-crece", "title": "El transporte de carga crece con la minería del sur", "date": "2024-03-18",
+     "text": "Entre las empresas que ampliaron flota figura Transportes Andinos del Sur, que pasó de 60 a 110 camiones en dos años, según su gerente Mauricio Céspedes Lozano."}
+  ]
+}

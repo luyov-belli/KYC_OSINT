@@ -1,0 +1,29 @@
+{
+  "id": "homonimo",
+  "label": "2 · Contadora limpia con un homónimo sentenciado (debe descartarse)",
+  "description": "Profesional con trayectoria verificable y una venta publicada. Un homónimo con una condena aparece en los resultados: el agente debe descartarlo por edad y ciudad.",
+  "expected": {"risk_levels": ["bajo", "medio"], "dd": ["simplificada", "estándar"], "pep": "no", "discard_ids": [2]},
+  "profile": {
+    "full_name": "Lucía Fernanda Paredes Quispe",
+    "dni": "40000002",
+    "age": 41,
+    "city": "Trujillo",
+    "declared_occupation": "Contadora, jefa de contabilidad",
+    "employer": "Agroexportadora Costa Norte S.A.",
+    "amount": 200000,
+    "currency": "USD",
+    "declared_source_of_funds": "Ahorros de su carrera y la venta de su participación en un estudio contable"
+  },
+  "sources": [
+    {"id": 1, "url": "https://empleos.ejemplo.pe/perfil/lucia-paredes-quispe", "title": "Lucía Paredes Quispe · Jefa de Contabilidad · Agroexportadora Costa Norte", "date": "2026-08-01",
+     "text": "Contadora pública colegiada con 17 años de experiencia. Jefa de contabilidad en Agroexportadora Costa Norte S.A. (Trujillo) desde 2018. Antes, socia fundadora de Paredes & Ríos Contadores."},
+    {"id": 2, "url": "https://regional.ejemplo.pe/puno/2023/11/sentencia-estafa", "title": "Condenan a mujer por estafa en venta de terrenos en Juliaca", "date": "2023-11-09",
+     "text": "El juzgado condenó a Lucía Paredes Quispe, de 63 años, natural de Juliaca, a cuatro años de pena suspendida por estafar a compradores de lotes."},
+    {"id": 3, "url": "https://regional.ejemplo.pe/la-libertad/2025/06/estudio-contable-fusion", "title": "Estudio contable trujillano se integra a firma nacional", "date": "2025-06-17",
+     "text": "Paredes & Ríos Contadores fue adquirido por una firma de auditoría nacional. La socia fundadora Lucía Fernanda Paredes Quispe vendió su participación por S/ 350,000, según el comunicado de la firma compradora."},
+    {"id": 4, "url": "https://colegio-contadores.ejemplo.pe/habilidad/40000002", "title": "Constancia de habilidad profesional", "date": "2026-10-30",
+     "text": "Paredes Quispe, Lucía Fernanda. Matrícula 10-0000 (ficticia). Estado: hábil. Colegio de Contadores de La Libertad."},
+    {"id": 5, "url": "https://noticias.ejemplo.pe/regiones/2026/02/agroexportaciones-record", "title": "Agroexportaciones de La Libertad marcan récord", "date": "2026-02-03",
+     "text": "Agroexportadora Costa Norte S.A. reportó ventas por US$ 85 millones. La nota cita a su gerente general; no menciona a otros funcionarios."}
+  ]
+}

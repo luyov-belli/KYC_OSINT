@@ -1,0 +1,29 @@
+{
+  "id": "ex_funcionario",
+  "label": "3 · Ex gerente de un gobierno regional (PEP → DD reforzada)",
+  "description": "Dejó un cargo público prominente hace menos de cinco años. No hay noticias adversas, pero sigue siendo PEP: corresponde DD reforzada.",
+  "expected": {"risk_levels": ["alto"], "dd": ["reforzada"], "pep": "si", "discard_ids": []},
+  "profile": {
+    "full_name": "Óscar Benavente Ríos",
+    "dni": "20000003",
+    "age": 58,
+    "city": "Huancayo",
+    "declared_occupation": "Consultor en gestión pública",
+    "employer": "Benavente Consultores E.I.R.L.",
+    "amount": 350000,
+    "currency": "USD",
+    "declared_source_of_funds": "Ahorros de 30 años de carrera en el sector público y privado, y honorarios de consultoría"
+  },
+  "sources": [
+    {"id": 1, "url": "https://normas.ejemplo.pe/2019/01/resolucion-ejecutiva-regional-015", "title": "Resolución Ejecutiva Regional que designa al Gerente General Regional", "date": "2019-01-03",
+     "text": "Designar al señor Óscar Benavente Ríos, identificado con DNI 20000003, en el cargo de Gerente General Regional del Gobierno Regional de Junín."},
+    {"id": 2, "url": "https://normas.ejemplo.pe/2022/12/resolucion-ejecutiva-regional-402", "title": "Resolución que da por concluida la designación", "date": "2022-12-30",
+     "text": "Dar por concluida, a partir del 31 de diciembre de 2022, la designación del señor Óscar Benavente Ríos como Gerente General Regional, dándosele las gracias por los servicios prestados."},
+    {"id": 3, "url": "https://transparencia.ejemplo.pe/declaraciones/2022/benavente-rios", "title": "Declaración jurada de ingresos, bienes y rentas 2022", "date": "2022-04-15",
+     "text": "Benavente Ríos, Óscar. Remuneración mensual: S/ 15,600. Bienes declarados: un inmueble en Huancayo y un vehículo. Sin participación en empresas."},
+    {"id": 4, "url": "https://empresas.ejemplo.pe/ruc/20000000003", "title": "Benavente Consultores E.I.R.L. · ficha de empresa", "date": "2026-10-20",
+     "text": "RUC 20000000003 (ficticio). Activa desde 2023. Titular-gerente: Óscar Benavente Ríos. Actividad: consultoría en gestión. Tamaño: microempresa."},
+    {"id": 5, "url": "https://regional.ejemplo.pe/junin/2025/04/obras-transferencia", "title": "Informe de transferencia de gestión del gobierno regional", "date": "2025-04-08",
+     "text": "El informe de transferencia menciona a los gerentes generales del periodo 2019-2022, entre ellos Óscar Benavente Ríos, sin observaciones de control a su nombre."}
+  ]
+}

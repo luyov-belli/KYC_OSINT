@@ -1,0 +1,30 @@
+{
+  "id": "creador_contenido",
+  "label": "1 · Creador de contenido que opina de política (ruido alto, riesgo bajo)",
+  "description": "Streamer con productora propia. Mucha opinión política en redes, pero nunca ocupó un cargo público. El agente debe separar el ruido de lo que explica su patrimonio.",
+  "expected": {"risk_levels": ["bajo", "medio"], "dd": ["simplificada", "estándar"], "pep": "no", "discard_ids": [5]},
+  "profile": {
+    "full_name": "Renzo Valdivia Achahui",
+    "age": 33,
+    "city": "Lima",
+    "declared_occupation": "Creador de contenido y gerente de su productora",
+    "employer": "Valdivia Contenidos S.A.C.",
+    "amount": 120000,
+    "currency": "USD",
+    "declared_source_of_funds": "Ingresos por patrocinios, publicidad y servicios de producción de su empresa"
+  },
+  "sources": [
+    {"id": 1, "url": "https://noticias.ejemplo.pe/economia/2026/03/creadores-que-facturan", "title": "Los creadores peruanos que ya facturan como pymes", "date": "2026-03-14",
+     "text": "Renzo Valdivia Achahui, de 33 años, empezó con un canal de análisis de actualidad en 2017. Hoy su productora, Valdivia Contenidos S.A.C., tiene ocho trabajadores y contratos de patrocinio con dos bancos y una cadena de retail. Él estima ventas anuales cercanas a S/ 2 millones."},
+    {"id": 2, "url": "https://redes.ejemplo.com/renzovaldivia/post/88213", "title": "Publicación de Renzo Valdivia sobre el Congreso", "date": "2026-09-02",
+     "text": "\"Este Congreso legisla para sí mismo. Si hubiera elecciones mañana, que se vayan todos.\" La publicación tuvo 40 mil reacciones."},
+    {"id": 3, "url": "https://noticias.ejemplo.pe/politica/2026/10/debate-influencers", "title": "Influencers opinan sobre la segunda vuelta", "date": "2026-10-11",
+     "text": "El programa invitó a tres creadores de contenido, entre ellos Renzo Valdivia, a comentar los planes de gobierno. Valdivia aclaró que no milita en ningún partido ni tiene aspiraciones políticas."},
+    {"id": 4, "url": "https://empresas.ejemplo.pe/ruc/20000000001", "title": "Valdivia Contenidos S.A.C. · ficha de empresa", "date": "2026-11-01",
+     "text": "RUC 20000000001 (ficticio). Activa y habida desde 2019. Actividad: producción de contenidos audiovisuales. Gerente general: Renzo Valdivia Achahui. Tamaño: pequeña empresa. Trabajadores declarados: 8."},
+    {"id": 5, "url": "https://regional.ejemplo.pe/arequipa/2024/05/multa-municipal", "title": "Municipalidad multa a comerciante por construcción sin licencia", "date": "2024-05-20",
+     "text": "Renzo Valdivia, comerciante de 58 años del distrito de Cayma (Arequipa), fue multado por ampliar su local sin licencia de edificación."},
+    {"id": 6, "url": "https://redes.ejemplo.com/renzovaldivia/post/90117", "title": "Polémica por comentario de Renzo Valdivia sobre un futbolista", "date": "2026-10-28",
+     "text": "Un comentario del streamer sobre la selección generó críticas en redes. Valdivia pidió disculpas en su siguiente transmisión."}
+  ]
+}
