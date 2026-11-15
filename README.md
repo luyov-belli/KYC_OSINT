@@ -2,6 +2,8 @@
 
 > **Hacemos borradores de KYC para boutiques de wealth management en el Perú mediante un agente que cruza listas de sanciones, fuentes públicas peruanas y un estimador de patrimonio: en un minuto y con cada hallazgo citado.**
 
+[![pruebas](https://github.com/luyov-belli/KYC_OSINT/actions/workflows/tests.yml/badge.svg)](https://github.com/luyov-belli/KYC_OSINT/actions/workflows/tests.yml)
+
 Proyecto final de *Data Science con Python* (Universidad del Pacífico, 2026-II) · [issue #205](https://github.com/d2cml-ai/Data-Science-Python/issues/205)
 
 **Demo:** _URL de Streamlit Community Cloud (pendiente)_ · **Video de respaldo:** _pendiente_
@@ -63,7 +65,7 @@ uv sync
 uv run streamlit run app.py
 ```
 
-Pruebas sin API: `uv run pytest`. Evaluación con los sintéticos: `uv run python scripts/eval_synthetic.py` ([resultados](docs/eval_sinteticos.md)).
+Pruebas sin API: `uv run pytest` (corren en GitHub Actions en cada push). Evaluación con los sintéticos: `uv run python scripts/eval_synthetic.py` ([resultados](docs/eval_sinteticos.md)).
 
 **Capturas:** _pendiente (3)_.
 
@@ -99,14 +101,21 @@ flowchart LR
 
 ## 8. Herramientas del curso
 
+Las dos principales son las que hacen el KYC: **Scraping y APIs (03)** trae los datos que exige el regulador y **LLMs con salidas estructuradas (08)** convierte texto desordenado en evidencia auditable. **Dashboards (05)** y **Despliegue y evaluación (12)** ponen el producto en una URL pública y miden que funcione.
+
 | Herramienta | Sesión | Dónde | Para qué |
 |---|---|---|---|
-| Scraping y APIs | 03 | [`kyc/sanctions.py`](kyc/sanctions.py), [`kyc/osint.py`](kyc/osint.py), [`kyc/wealth.py`](kyc/wealth.py) (API BCRP), [`scripts/build_enaho_table.py`](scripts/build_enaho_table.py) | Ingesta de listas oficiales, búsqueda en fuentes públicas, tipo de cambio y microdatos |
-| LLMs con salidas estructuradas | 08 | [`kyc/llm.py`](kyc/llm.py), [`kyc/schemas.py`](kyc/schemas.py) | Extraer hallazgos con puntajes en JSON validado por pydantic y redactar con citas |
-| Dashboards (Streamlit) | 05 | [`app.py`](app.py) | El producto: formulario, gráfico identidad × relevancia, monto tope y descarga |
-| Datos de la ENAHO | 16 | [`data/ingresos_ocupacion_edad.csv`](data/ingresos_ocupacion_edad.csv) | Percentiles de ingreso por ocupación y edad para el monto tope |
+| **LLMs con salidas estructuradas** | 08 | [`kyc/llm.py`](kyc/llm.py), [`kyc/schemas.py`](kyc/schemas.py) | Claude devuelve JSON validado con pydantic: un puntaje de identidad y otro de relevancia por fuente, la condición PEP y las señales de patrimonio. Luego redacta el borrador citando cada fuente [n] |
+| **Scraping y APIs** | 03 | [`kyc/sanctions.py`](kyc/sanctions.py) (OFAC en CSV, ONU en XML), [`kyc/wealth.py`](kyc/wealth.py) (API del BCRP en JSON), [`kyc/osint.py`](kyc/osint.py) (búsqueda web) | Ingesta de las listas oficiales de sanciones, el tipo de cambio y las fuentes públicas peruanas |
+| Dashboards con Streamlit | 05 | [`app.py`](app.py) | El producto: formulario, semáforo, gráfico identidad × relevancia, monto tope, simulación de monto y descarga del Word |
+| Despliegue y evaluación | 12 | Streamlit Community Cloud con secrets, [`scripts/eval_synthetic.py`](scripts/eval_synthetic.py), [`tests/`](tests/), [`.github/workflows/tests.yml`](.github/workflows/tests.yml), `UsageTracker` en [`kyc/llm.py`](kyc/llm.py) | URL pública con código de acceso; set de prueba con 5 casos sintéticos y su resultado esperado ([5/5](docs/eval_sinteticos.md)); costo por token medido en cada informe; pruebas en integración continua en cada push |
 
-**Por qué estas:** las APIs y el scraping traen los datos públicos que exige un KYC, y las salidas estructuradas convierten texto desordenado en evidencia auditable. Streamlit pone todo en una URL que un oficial de cumplimiento puede usar sin instalar nada.
+**Por qué estas:** un KYC necesita datos oficiales (listas de sanciones, tipo de cambio, fuentes públicas) y criterio para separar lo relevante del ruido. Las APIs resuelven lo primero. Las salidas estructuradas resuelven lo segundo sin perder trazabilidad: cada juicio del modelo queda como un puntaje con su razón y su fuente, que el código valida y las reglas usan. Streamlit y el despliegue lo ponen en manos de un oficial de cumplimiento sin instalar nada, y la evaluación muestra que acierta y cuánto cuesta.
+
+**Precisiones:**
+- **Sin Selenium.** La búsqueda web la hace la herramienta del servidor de Claude. Lo propio de la sesión 03 aquí es descargar y leer CSV, XML y JSON de fuentes oficiales.
+- **Un solo paso agéntico, a propósito.** El paso OSINT es un agente con herramientas y límites (hasta 5 búsquedas y 1 lectura de página), pero no usa crewAI ni coordina varios agentes: el resto del flujo es determinista para que sea auditable.
+- **La ENAHO es una fuente de datos, no una skill.** El ingreso por ocupación y edad sale del módulo 500 de la ENAHO 2024 (INEI), procesado con [`scripts/build_enaho_table.py`](scripts/build_enaho_table.py) en [`data/ingresos_ocupacion_edad.csv`](data/ingresos_ocupacion_edad.csv).
 
 ## 9. Qué hizo el agente
 
