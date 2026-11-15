@@ -1,0 +1,70 @@
+grupo_cno,grupo_cno_nombre,grupo_edad,n_obs,poblacion,p50,p75,p90,p95,p99
+0,Ocupaciones militares y policiales,18-24,28,12330,38570,43886,52785,53897,67812
+0,Ocupaciones militares y policiales,25-34,83,36145,40050,45846,51554,55211,72856
+0,Ocupaciones militares y policiales,35-44,55,25057,42589,49431,58162,60967,61976
+0,Ocupaciones militares y policiales,45-54,34,12696,48941,51911,58679,60559,242822
+0,Ocupaciones militares y policiales,55-64,16,9491,48836,53640,63058,63058,63910
+0,Ocupaciones militares y policiales,todas,216,95720,42769,48836,55211,60967,72856
+1,"Miembros del poder ejecutivo, legislativo, judicial y personal directivo de la administración pública y privada",18-24,1,41,28494,28494,28494,28494,28494
+1,"Miembros del poder ejecutivo, legislativo, judicial y personal directivo de la administración pública y privada",25-34,18,6180,44084,51856,67384,67384,67384
+1,"Miembros del poder ejecutivo, legislativo, judicial y personal directivo de la administración pública y privada",35-44,56,11587,70738,96006,186907,289250,307125
+1,"Miembros del poder ejecutivo, legislativo, judicial y personal directivo de la administración pública y privada",45-54,89,25290,61049,87291,149742,224255,315656
+1,"Miembros del poder ejecutivo, legislativo, judicial y personal directivo de la administración pública y privada",55-64,57,14831,63047,99069,180446,218894,251908
+1,"Miembros del poder ejecutivo, legislativo, judicial y personal directivo de la administración pública y privada",65+,17,2923,23989,47775,117428,160870,160870
+1,"Miembros del poder ejecutivo, legislativo, judicial y personal directivo de la administración pública y privada",todas,238,60852,61346,85183,152515,218894,307125
+2,Profesionales científicos e intelectuales,18-24,167,69431,16373,23965,43622,64891,73145
+2,Profesionales científicos e intelectuales,25-34,937,414778,30383,42634,64946,77784,135736
+2,Profesionales científicos e intelectuales,35-44,951,332912,36536,50146,83229,111238,154265
+2,Profesionales científicos e intelectuales,45-54,862,252390,40194,55110,76537,98166,144492
+2,Profesionales científicos e intelectuales,55-64,755,188522,41450,51009,79110,96883,156965
+2,Profesionales científicos e intelectuales,65+,220,47217,35989,49458,90223,102399,238610
+2,Profesionales científicos e intelectuales,todas,3892,1305249,35989,48491,73421,96579,151015
+3,Profesionales técnicos,18-24,379,161602,15546,21693,30027,35088,46233
+3,Profesionales técnicos,25-34,899,427679,22719,35016,55685,66466,159568
+3,Profesionales técnicos,35-44,803,313931,30626,45778,68379,85881,149143
+3,Profesionales técnicos,45-54,574,192779,33412,51447,75250,105186,188586
+3,Profesionales técnicos,55-64,340,100538,31775,47361,73436,100111,214338
+3,Profesionales técnicos,65+,176,48717,21253,38845,59956,86191,198414
+3,Profesionales técnicos,todas,3171,1245246,24533,40721,62988,76149,168402
+4,Jefes y empleados administrativos,18-24,398,184858,14151,19581,26068,32439,47704
+4,Jefes y empleados administrativos,25-34,874,386055,21401,30074,47226,67000,110612
+4,Jefes y empleados administrativos,35-44,567,207962,25215,42296,62546,83017,169668
+4,Jefes y empleados administrativos,45-54,395,137869,31057,46994,80643,115490,228745
+4,Jefes y empleados administrativos,55-64,257,71640,28025,41032,72976,87205,163688
+4,Jefes y empleados administrativos,65+,113,25893,27687,44972,79638,92445,120903
+4,Jefes y empleados administrativos,todas,2604,1014277,21752,33802,55207,75754,133991
+5,Trabajadores de los servicios y vendedores de comercios y mercados,18-24,1218,482131,12292,17240,22777,29592,42467
+5,Trabajadores de los servicios y vendedores de comercios y mercados,25-34,1677,752485,13477,20452,29421,37400,62808
+5,Trabajadores de los servicios y vendedores de comercios y mercados,35-44,1967,685504,13565,21603,33445,45387,79331
+5,Trabajadores de los servicios y vendedores de comercios y mercados,45-54,1938,585111,13606,21643,34154,43524,74889
+5,Trabajadores de los servicios y vendedores de comercios y mercados,55-64,1454,382795,10721,18220,30494,42575,79736
+5,Trabajadores de los servicios y vendedores de comercios y mercados,65+,914,190876,6652,13765,21777,32301,51605
+5,Trabajadores de los servicios y vendedores de comercios y mercados,todas,9168,3078902,12486,19501,29940,39580,68586
+6,"Agricultores y trabajadores calificados agropecuarios, forestales y pesqueros",18-24,228,64883,5457,11167,20543,25983,49347
+6,"Agricultores y trabajadores calificados agropecuarios, forestales y pesqueros",25-34,1029,351405,7475,13526,21700,27938,45183
+6,"Agricultores y trabajadores calificados agropecuarios, forestales y pesqueros",35-44,1948,488332,9198,16182,26038,32973,62538
+6,"Agricultores y trabajadores calificados agropecuarios, forestales y pesqueros",45-54,2357,484855,9089,16061,26319,35701,74695
+6,"Agricultores y trabajadores calificados agropecuarios, forestales y pesqueros",55-64,2495,387899,7579,13822,22813,30126,69968
+6,"Agricultores y trabajadores calificados agropecuarios, forestales y pesqueros",65+,3243,420467,4249,8067,13449,17887,31737
+6,"Agricultores y trabajadores calificados agropecuarios, forestales y pesqueros",todas,11300,2197841,7440,13714,22407,29959,62306
+7,"Trabajadores de la construcción, edificación, productos artesanales, electricidad y las telecomunicaciones",18-24,475,212411,12945,18354,25863,31673,48513
+7,"Trabajadores de la construcción, edificación, productos artesanales, electricidad y las telecomunicaciones",25-34,744,369997,15938,23894,33193,40040,59790
+7,"Trabajadores de la construcción, edificación, productos artesanales, electricidad y las telecomunicaciones",35-44,907,391894,16087,24230,34897,40748,61354
+7,"Trabajadores de la construcción, edificación, productos artesanales, electricidad y las telecomunicaciones",45-54,932,366577,15665,23993,34563,41150,71740
+7,"Trabajadores de la construcción, edificación, productos artesanales, electricidad y las telecomunicaciones",55-64,675,226413,11925,19089,30453,36608,58111
+7,"Trabajadores de la construcción, edificación, productos artesanales, electricidad y las telecomunicaciones",65+,465,111434,7204,14453,22420,26422,68702
+7,"Trabajadores de la construcción, edificación, productos artesanales, electricidad y las telecomunicaciones",todas,4198,1678725,14918,22581,31646,39323,61968
+8,"Operadores de maquinaria industrial, ensambladores y conductores de transporte",18-24,296,130976,12689,18011,25543,31486,51616
+8,"Operadores de maquinaria industrial, ensambladores y conductores de transporte",25-34,819,416344,16228,23742,34081,44986,77376
+8,"Operadores de maquinaria industrial, ensambladores y conductores de transporte",35-44,970,400590,17979,27221,38374,49442,84947
+8,"Operadores de maquinaria industrial, ensambladores y conductores de transporte",45-54,776,291079,18485,30112,39764,48433,77712
+8,"Operadores de maquinaria industrial, ensambladores y conductores de transporte",55-64,531,174558,15386,21168,30037,40929,79589
+8,"Operadores de maquinaria industrial, ensambladores y conductores de transporte",65+,231,63557,12121,18095,24940,35350,47009
+8,"Operadores de maquinaria industrial, ensambladores y conductores de transporte",todas,3623,1477104,16471,24296,35665,45629,77376
+9,Ocupaciones elementales,18-24,1783,641454,11943,17968,23211,28309,40542
+9,Ocupaciones elementales,25-34,2309,1037017,14812,21099,27321,31640,52199
+9,Ocupaciones elementales,35-44,2731,981472,15143,21491,28887,35970,51070
+9,Ocupaciones elementales,45-54,2471,767203,14149,20314,26354,31773,48029
+9,Ocupaciones elementales,55-64,1707,504741,12534,18354,25945,32988,54591
+9,Ocupaciones elementales,65+,853,237066,7594,14351,20328,24135,42497
+9,Ocupaciones elementales,todas,11854,4168954,13601,19850,26458,31840,50201
