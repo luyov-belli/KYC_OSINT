@@ -6,7 +6,7 @@
 
 Proyecto final de *Data Science con Python* (Universidad del Pacífico, 2026-II) · [issue #205](https://github.com/d2cml-ai/Data-Science-Python/issues/205)
 
-**Demo:** _URL de Streamlit Community Cloud (pendiente)_ · **Video de respaldo:** _pendiente_
+**Demo:** [kyc-osint.streamlit.app](https://kyc-osint.streamlit.app/) · **Video de respaldo:** _pendiente_
 
 ---
 
@@ -50,7 +50,7 @@ Escribes el nombre del lead y sus datos declarados. En un minuto sale un **borra
 
 ## 6. Demo
 
-**URL pública:** _pendiente (Streamlit Community Cloud)_.
+**URL pública:** [kyc-osint.streamlit.app](https://kyc-osint.streamlit.app/) (Streamlit Community Cloud). El modo sintético está abierto; el modo en vivo pide un código de acceso.
 
 - **Modo sintético (abierto):** cinco personas ficticias con evidencia ficticia: un creador de contenido que opina de política sin ser PEP, una contadora con un homónimo sentenciado, un ex funcionario regional (PEP), un empresario con investigación fiscal por lavado y una comerciante que declara muy por encima de su tope. Sus resultados están precalculados en [`fixtures/resultados/`](fixtures/resultados/): se muestran al instante y sin costo de API.
 - **Modo en vivo (con código de acceso):** busca en fuentes públicas reales. Está protegido para que nadie use la URL pública para perfilar a terceros. En la presentación corre sobre mi propio perfil.
