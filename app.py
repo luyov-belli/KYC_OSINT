@@ -30,29 +30,46 @@ FIXTURES = Path(__file__).parent / "fixtures"
 SAVED = FIXTURES / "resultados"
 MAX_LIVE_RUNS = 5
 
-# Paleta de la interfaz (también en .streamlit/config.toml)
+# ---- Manual de marca (también en .streamlit/config.toml) ----
+# Principales: estructura y acento. Gold solo para destacar, nunca con texto blanco encima.
 GOLD, SAND, GRAPHITE, STEEL = "#facb00", "#998867", "#424242", "#686b6b"
-SAND_LIGHT, LINE, STEEL_LIGHT = "#f6f4ef", "#e3ddd0", "#c4c6c6"
-# El semáforo de riesgo conserva colores semánticos, en tonos sobrios
-LEVEL_COLORS = {"bajo": "#2e7d4f", "medio": "#d9822b", "alto": "#c0392b", "crítico": "#7b1c1c"}
-CLASS_COLORS = {"considerada": GOLD, "contexto": SAND, "descartada": STEEL_LIGHT}
+INK = "#212121"                                                        # texto
+# Secundarios: solo para el semáforo de riesgo y los avisos (uso puntual)
+GREEN, ORANGE, RED = "#4db58d", "#d59413", "#e94843"
+# Transparencias de la paleta sobre blanco
+STEEL_10, STEEL_20, STEEL_40, SAND_10 = "#f0f0f0", "#e1e1e1", "#c3c4c4", "#f5f3f0"
+# Semáforo: (fondo, texto). Texto oscuro sobre los colores claros; blanco solo sobre el negro.
+LEVEL_STYLE = {"bajo": (GREEN, INK), "medio": (ORANGE, INK), "alto": (RED, INK), "crítico": (INK, "#ffffff")}
+CLASS_COLORS = {"considerada": GOLD, "contexto": SAND, "descartada": STEEL_40}
+# Énfasis: el manual usa Oddval, que no es una fuente libre; Sora es el sustituto web más cercano.
+EMPHASIS_FONT = "'Sora', 'Inter', sans-serif"
+# Motivo del manual: la línea en forma de pestaña sobre las bandas de título
+TAB_MOTIF = ("<svg class='kyc-motif' width='150' height='30' viewBox='0 0 150 30' aria-hidden='true'>"
+             f"<polyline points='1,0 17,27 133,27 149,0' fill='none' stroke='{GOLD}' stroke-width='2'/></svg>")
 
 CSS = f"""
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@600;700&display=swap');
 .block-container {{ padding-top: 2.2rem; }}
-.kyc-header {{ background: {GRAPHITE}; border-bottom: 4px solid {GOLD}; border-radius: 8px;
-  padding: 1.25rem 1.5rem; margin-bottom: 1.25rem; }}
-.kyc-header .brand {{ color: #fff; font-size: 1.9rem; font-weight: 700; letter-spacing: .02em; line-height: 1.1; }}
-.kyc-header .brand span {{ color: {GOLD}; }}
-.kyc-header .tag {{ color: #d9d9d9; font-size: .95rem; margin-top: .35rem; }}
-.kyc-eyebrow {{ color: {SAND}; font-size: .75rem; font-weight: 600; letter-spacing: .12em;
-  text-transform: uppercase; margin: 0 0 .25rem; }}
-.kyc-note {{ background: {SAND_LIGHT}; border-left: 4px solid {SAND}; border-radius: 6px;
-  padding: .8rem 1rem; color: {GRAPHITE}; margin: .25rem 0 1rem; }}
+[data-testid="stMain"] h1, [data-testid="stMain"] h2, [data-testid="stMain"] h3 {{ color: {GRAPHITE}; }}
+.kyc-em {{ font-family: {EMPHASIS_FONT}; }}
+.kyc-header {{ position: relative; overflow: hidden; background: {GRAPHITE}; border-radius: 8px;
+  padding: 1.4rem 1.6rem 1.25rem; margin-bottom: 1.25rem; }}
+.kyc-header .brand {{ font-family: 'Inter', sans-serif; color: #fff; font-size: 2.1rem; font-weight: 800;
+  line-height: 1.1; }}
+.kyc-header .brand .kyc-em {{ color: {GOLD}; }}
+.kyc-header .tag {{ color: {STEEL_20}; font-size: .95rem; margin-top: .45rem; max-width: 760px; }}
+.kyc-motif {{ position: absolute; top: 0; right: 1.6rem; }}
+.kyc-eyebrow {{ font-family: 'Inter', sans-serif; color: {STEEL}; font-size: .75rem; font-weight: 700;
+  letter-spacing: .12em; text-transform: uppercase; margin: 0 0 .25rem; }}
+[data-testid="stSidebar"] .kyc-eyebrow {{ color: {GOLD}; }}
+.kyc-note {{ background: {SAND_10}; border-left: 4px solid {SAND}; border-radius: 6px;
+  padding: .8rem 1rem; color: {INK}; margin: .25rem 0 1rem; }}
 .kyc-subject {{ display: flex; align-items: center; gap: .75rem; flex-wrap: wrap; margin: .25rem 0 .75rem; }}
-.kyc-subject .name {{ font-size: 1.5rem; font-weight: 700; color: {GRAPHITE}; }}
-.kyc-badge {{ font-size: .75rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase;
-  padding: .2rem .6rem; border-radius: 999px; background: {SAND_LIGHT}; color: {SAND}; border: 1px solid {LINE}; }}
+.kyc-subject .name {{ font-family: 'Inter', sans-serif; font-size: 1.6rem; font-weight: 800; color: {GRAPHITE}; }}
+.kyc-badge {{ font-family: 'Inter', sans-serif; font-size: .72rem; font-weight: 700; letter-spacing: .08em;
+  text-transform: uppercase; padding: .22rem .65rem; border-radius: 999px; background: {STEEL_20}; color: {INK}; }}
+.kyc-badge.live {{ background: {GOLD}; color: {GRAPHITE}; }}
 /* Tarjetas de resumen: si no caben en una fila, pasan a la siguiente (nunca se cortan) */
 .kyc-wrap {{ container-type: inline-size; }}
 .kyc-cards {{ display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: .75rem;
@@ -61,15 +78,20 @@ CSS = f"""
   .kyc-cards {{ grid-template-columns: repeat(5, minmax(0, 1fr)); }}
   .kyc-card .value {{ font-size: clamp(1rem, 2.1cqi, 1.4rem) !important; }}
 }}
-.kyc-card {{ background: {SAND_LIGHT}; border: 1px solid {LINE}; border-radius: 6px; padding: .65rem .9rem; }}
-.kyc-card .label {{ font-size: .8rem; color: {STEEL}; }}
-.kyc-card .value {{ font-size: 1.35rem; font-weight: 700; color: {GRAPHITE}; line-height: 1.35;
-  white-space: nowrap; }}
+.kyc-card {{ background: {STEEL_10}; border: 1px solid {STEEL_20}; border-radius: 6px; padding: .65rem .9rem; }}
+.kyc-card .label {{ font-family: 'Inter', sans-serif; font-size: .8rem; font-weight: 600; color: {STEEL}; }}
+.kyc-card .value {{ font-family: 'Inter', sans-serif; font-size: 1.35rem; font-weight: 800; color: {INK};
+  line-height: 1.4; white-space: nowrap; }}
 .kyc-card .sub {{ font-size: .78rem; color: {STEEL}; }}
-.kyc-reco {{ border-left: 4px solid {GOLD}; padding: .4rem .9rem; margin: 1rem 0; color: {GRAPHITE}; }}
-button[kind^="primary"], button[kind^="primary"] p {{ color: {GRAPHITE} !important; font-weight: 600; }}
-.stTabs [data-baseweb="tab"] p {{ font-weight: 600; }}
-.kyc-footer {{ color: {STEEL}; font-size: .8rem; border-top: 1px solid {LINE}; margin-top: 2rem; padding-top: .75rem; }}
+.kyc-pill {{ display: inline-block; padding: 0 .55rem; border-radius: 4px; letter-spacing: .03em; }}
+.kyc-reco {{ border-left: 4px solid {GOLD}; padding: .4rem .9rem; margin: 1rem 0; color: {INK}; }}
+button[kind^="primary"], button[kind^="primary"] p {{ color: {GRAPHITE} !important; font-weight: 700; }}
+/* Pestañas: texto neutro; la seleccionada en negro con subrayado Gold (nunca texto Gold sobre blanco) */
+[data-testid="stTab"], [data-testid="stTab"] p {{ font-family: 'Inter', sans-serif; font-weight: 600;
+  color: {STEEL} !important; }}
+[data-testid="stTab"][aria-selected="true"], [data-testid="stTab"][aria-selected="true"] p {{ color: {INK} !important; }}
+.kyc-footer {{ color: {STEEL}; font-size: .8rem; border-top: 1px solid {STEEL_20}; margin-top: 2rem;
+  padding-top: .75rem; }}
 </style>
 """
 
@@ -79,10 +101,11 @@ def note(html: str) -> None:
 
 
 def styled(chart: alt.Chart) -> alt.Chart:
-    """Ejes y tipografía de los gráficos con la paleta de la app."""
-    return (chart.configure_axis(labelColor=GRAPHITE, titleColor=GRAPHITE, gridColor="#eeeae1",
-                                 domainColor=LINE, tickColor=LINE, labelFont="Inter", titleFont="Inter")
-            .configure_legend(labelColor=GRAPHITE, titleColor=GRAPHITE, labelFont="Inter", titleFont="Inter")
+    """Ejes y tipografía de los gráficos según el manual de marca."""
+    return (chart.configure_axis(labelColor=GRAPHITE, titleColor=GRAPHITE, gridColor=STEEL_10,
+                                 domainColor=STEEL_20, tickColor=STEEL_20, labelFont="Open Sans",
+                                 titleFont="Inter", titleFontWeight=600)
+            .configure_legend(labelColor=GRAPHITE, titleColor=GRAPHITE, labelFont="Open Sans", titleFont="Inter")
             .configure_view(strokeWidth=0))
 
 
@@ -136,7 +159,7 @@ def run_synthetic(persona_id: str) -> pipeline.KycResult:
 # ---------------- Encabezado ----------------
 st.markdown(CSS, unsafe_allow_html=True)
 st.markdown(
-    "<div class='kyc-header'><div class='brand'>KYC <span>OSINT</span></div>"
+    f"<div class='kyc-header'>{TAB_MOTIF}<div class='brand'>KYC <span class='kyc-em'>OSINT</span></div>"
     "<div class='tag'>Borradores de KYC para wealth management en el Perú: listas de sanciones, fuentes "
     "públicas y monto tope plausible, en un minuto y con cada hallazgo citado.</div></div>",
     unsafe_allow_html=True)
@@ -248,7 +271,8 @@ if base is None:
 st.divider()
 st.markdown("<p class='kyc-eyebrow'>Borrador KYC</p>"
             f"<div class='kyc-subject'><span class='name'>{base.profile.full_name}</span>"
-            f"<span class='kyc-badge'>modo {base.mode}</span></div>", unsafe_allow_html=True)
+            f"<span class='kyc-badge{' live' if base.mode == 'en vivo' else ''}'>modo {base.mode}</span></div>",
+            unsafe_allow_html=True)
 
 # Simular otro monto: tope, coherencia, riesgo y DD se recalculan en Python (US$ 0).
 ver = st.session_state.get("result_ver", 0)
@@ -264,18 +288,18 @@ if result.amount_note:
     st.warning(result.amount_note)
 
 r, w = result.risk, result.wealth
-level_color = LEVEL_COLORS.get(r.level, GRAPHITE)
+level_bg, level_fg = LEVEL_STYLE.get(r.level, (STEEL_20, INK))
 
 
-def card(label: str, value: str, sub: str = "", color: str | None = None, title: str = "") -> str:
-    accent = f" style='border-left:4px solid {color}'" if color else ""
-    value_color = f" style='color:{color}'" if color else ""
-    return (f"<div class='kyc-card'{accent} title='{title}'><div class='label'>{label}</div>"
-            f"<div class='value'{value_color}>{value}</div><div class='sub'>{sub or '&nbsp;'}</div></div>")
+def card(label: str, value: str, sub: str = "", accent: str | None = None, title: str = "") -> str:
+    border = f" style='border-left:4px solid {accent}'" if accent else ""
+    return (f"<div class='kyc-card'{border} title='{title}'><div class='label'>{label}</div>"
+            f"<div class='value'>{value}</div><div class='sub'>{sub or '&nbsp;'}</div></div>")
 
 
+risk_pill = f"<span class='kyc-pill' style='background:{level_bg};color:{level_fg}'>{r.level.upper()}</span>"
 st.markdown("<div class='kyc-wrap'><div class='kyc-cards'>" + "".join([
-    card("Riesgo", r.level.upper(), f"puntaje {r.score}", color=level_color),
+    card("Riesgo", risk_pill, f"puntaje {r.score}", accent=RED if r.level == "crítico" else level_bg),
     card("Debida diligencia", r.dd_type),
     card("Monto tope plausible", f"S/ {w.tope_pen:,.0f}", "ahorro acumulado, no sueldo",
          title="Ingreso laboral bruto anual (ENAHO 2024) × 35 % de ahorro, año por año de carrera, "

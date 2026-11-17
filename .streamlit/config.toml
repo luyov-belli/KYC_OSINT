@@ -1,30 +1,53 @@
-# Tema de la app: dorado, arena, grafito y acero.
+# Tema de la app según el manual de marca de la firma:
+# tonos neutros como base, dorado solo como acento, colores secundarios solo para el
+# semáforo de riesgo y los avisos. Las transparencias son la paleta al 10-20 % sobre blanco.
 # Solo cambia la apariencia; el motor (kyc/) no depende de este archivo.
 
 [theme]
 base = "light"
-primaryColor = "#facb00"            # dorado: acentos, pestañas, botón principal
+primaryColor = "#facb00"               # Gold: acento y botón de acción (con texto Graphite)
 backgroundColor = "#ffffff"
-secondaryBackgroundColor = "#f6f4ef" # arena muy clara: tarjetas, inputs, expanders
-textColor = "#2f2f2f"
-linkColor = "#7d6d47"
-borderColor = "#e3ddd0"
+secondaryBackgroundColor = "#f0f0f0"   # Steel al 10 %: tarjetas, inputs, expanders
+textColor = "#212121"                  # negro de la paleta secundaria
+linkColor = "#3463ad"                  # azul de la paleta secundaria
+borderColor = "#e1e1e1"                # Steel al 20 %
 showWidgetBorder = true
 baseRadius = "6px"
 buttonRadius = "6px"
-font = "Inter:https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap, sans-serif"
-headingFont = "Inter, sans-serif"
-headingFontWeights = [700, 700, 600, 600, 600, 600]
-dataframeHeaderBackgroundColor = "#f1ede4"
+# Tipografía: Open Sans para el texto, Inter para los títulos
+font = "Open Sans:https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap, sans-serif"
+headingFont = "Inter:https://fonts.googleapis.com/css2?family=Inter:wght@600;700;800&display=swap, sans-serif"
+headingFontWeights = [800, 700, 700, 600, 600, 600]
+dataframeHeaderBackgroundColor = "#f0f0f0"
 dataframeHeaderTextColor = "#424242"
-chartCategoricalColors = ["#facb00", "#424242", "#998867", "#686b6b", "#d9c37a", "#b9bcbc"]
+chartCategoricalColors = ["#facb00", "#424242", "#998867", "#686b6b", "#807a54", "#3463ad"]
+# Avisos (éxito, advertencia, error, información) con los secundarios del manual
+greenColor = "#4db58d"
+orangeColor = "#d59413"
+yellowColor = "#d59413"
+redColor = "#e94843"
+blueColor = "#3463ad"
+grayColor = "#686b6b"
+greenBackgroundColor = "#e4f4ee"
+orangeBackgroundColor = "#f9efdc"
+yellowBackgroundColor = "#f9efdc"
+redBackgroundColor = "#fce4e3"
+blueBackgroundColor = "#e1e8f3"
+grayBackgroundColor = "#f0f0f0"
+# Texto de los avisos en negro de la paleta: contraste alto sobre los fondos claros
+greenTextColor = "#212121"
+orangeTextColor = "#212121"
+yellowTextColor = "#212121"
+redTextColor = "#212121"
+blueTextColor = "#212121"
+grayTextColor = "#424242"
 
 [theme.sidebar]
-backgroundColor = "#424242"         # grafito
-secondaryBackgroundColor = "#4d4d4d"
-textColor = "#f2f2f2"
+backgroundColor = "#424242"            # Graphite, con texto blanco y acentos Gold
+secondaryBackgroundColor = "#555555"   # Graphite al 90 %
+textColor = "#ffffff"
 primaryColor = "#facb00"
-borderColor = "#5c5c5c"
+borderColor = "#686b6b"
 linkColor = "#facb00"
-codeBackgroundColor = "#4d4d4d"
+codeBackgroundColor = "#555555"
 codeTextColor = "#facb00"
