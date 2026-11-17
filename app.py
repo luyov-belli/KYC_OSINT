@@ -29,8 +29,61 @@ st.set_page_config(page_title="KYC OSINT", page_icon="🔎", layout="wide")
 FIXTURES = Path(__file__).parent / "fixtures"
 SAVED = FIXTURES / "resultados"
 MAX_LIVE_RUNS = 5
-LEVEL_COLORS = {"bajo": "#1e7b34", "medio": "#b26b00", "alto": "#c62828", "crítico": "#8b0000"}
-CLASS_COLORS = {"considerada": "#c62828", "contexto": "#7a7a7a", "descartada": "#9ecae1"}
+
+# Paleta de la interfaz (también en .streamlit/config.toml)
+GOLD, SAND, GRAPHITE, STEEL = "#facb00", "#998867", "#424242", "#686b6b"
+SAND_LIGHT, LINE, STEEL_LIGHT = "#f6f4ef", "#e3ddd0", "#c4c6c6"
+# El semáforo de riesgo conserva colores semánticos, en tonos sobrios
+LEVEL_COLORS = {"bajo": "#2e7d4f", "medio": "#d9822b", "alto": "#c0392b", "crítico": "#7b1c1c"}
+CLASS_COLORS = {"considerada": GOLD, "contexto": SAND, "descartada": STEEL_LIGHT}
+
+CSS = f"""
+<style>
+.block-container {{ padding-top: 2.2rem; }}
+.kyc-header {{ background: {GRAPHITE}; border-bottom: 4px solid {GOLD}; border-radius: 8px;
+  padding: 1.25rem 1.5rem; margin-bottom: 1.25rem; }}
+.kyc-header .brand {{ color: #fff; font-size: 1.9rem; font-weight: 700; letter-spacing: .02em; line-height: 1.1; }}
+.kyc-header .brand span {{ color: {GOLD}; }}
+.kyc-header .tag {{ color: #d9d9d9; font-size: .95rem; margin-top: .35rem; }}
+.kyc-eyebrow {{ color: {SAND}; font-size: .75rem; font-weight: 600; letter-spacing: .12em;
+  text-transform: uppercase; margin: 0 0 .25rem; }}
+.kyc-note {{ background: {SAND_LIGHT}; border-left: 4px solid {SAND}; border-radius: 6px;
+  padding: .8rem 1rem; color: {GRAPHITE}; margin: .25rem 0 1rem; }}
+.kyc-subject {{ display: flex; align-items: center; gap: .75rem; flex-wrap: wrap; margin: .25rem 0 .75rem; }}
+.kyc-subject .name {{ font-size: 1.5rem; font-weight: 700; color: {GRAPHITE}; }}
+.kyc-badge {{ font-size: .75rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase;
+  padding: .2rem .6rem; border-radius: 999px; background: {SAND_LIGHT}; color: {SAND}; border: 1px solid {LINE}; }}
+/* Tarjetas de resumen: si no caben en una fila, pasan a la siguiente (nunca se cortan) */
+.kyc-wrap {{ container-type: inline-size; }}
+.kyc-cards {{ display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: .75rem;
+  margin: .5rem 0 .25rem; }}
+@container (min-width: 760px) {{
+  .kyc-cards {{ grid-template-columns: repeat(5, minmax(0, 1fr)); }}
+  .kyc-card .value {{ font-size: clamp(1rem, 2.1cqi, 1.4rem) !important; }}
+}}
+.kyc-card {{ background: {SAND_LIGHT}; border: 1px solid {LINE}; border-radius: 6px; padding: .65rem .9rem; }}
+.kyc-card .label {{ font-size: .8rem; color: {STEEL}; }}
+.kyc-card .value {{ font-size: 1.35rem; font-weight: 700; color: {GRAPHITE}; line-height: 1.35;
+  white-space: nowrap; }}
+.kyc-card .sub {{ font-size: .78rem; color: {STEEL}; }}
+.kyc-reco {{ border-left: 4px solid {GOLD}; padding: .4rem .9rem; margin: 1rem 0; color: {GRAPHITE}; }}
+button[kind^="primary"], button[kind^="primary"] p {{ color: {GRAPHITE} !important; font-weight: 600; }}
+.stTabs [data-baseweb="tab"] p {{ font-weight: 600; }}
+.kyc-footer {{ color: {STEEL}; font-size: .8rem; border-top: 1px solid {LINE}; margin-top: 2rem; padding-top: .75rem; }}
+</style>
+"""
+
+
+def note(html: str) -> None:
+    st.markdown(f"<div class='kyc-note'>{html}</div>", unsafe_allow_html=True)
+
+
+def styled(chart: alt.Chart) -> alt.Chart:
+    """Ejes y tipografía de los gráficos con la paleta de la app."""
+    return (chart.configure_axis(labelColor=GRAPHITE, titleColor=GRAPHITE, gridColor="#eeeae1",
+                                 domainColor=LINE, tickColor=LINE, labelFont="Inter", titleFont="Inter")
+            .configure_legend(labelColor=GRAPHITE, titleColor=GRAPHITE, labelFont="Inter", titleFont="Inter")
+            .configure_view(strokeWidth=0))
 
 
 def secret(name: str) -> str | None:
@@ -81,11 +134,15 @@ def run_synthetic(persona_id: str) -> pipeline.KycResult:
 
 
 # ---------------- Encabezado ----------------
-st.title("🔎 KYC OSINT")
-st.caption("Borradores de KYC para wealth management en Perú: listas de sanciones, fuentes públicas "
-           "y monto tope plausible, en un minuto y con cada hallazgo citado.")
+st.markdown(CSS, unsafe_allow_html=True)
+st.markdown(
+    "<div class='kyc-header'><div class='brand'>KYC <span>OSINT</span></div>"
+    "<div class='tag'>Borradores de KYC para wealth management en el Perú: listas de sanciones, fuentes "
+    "públicas y monto tope plausible, en un minuto y con cada hallazgo citado.</div></div>",
+    unsafe_allow_html=True)
 
 with st.sidebar:
+    st.markdown("<p class='kyc-eyebrow'>KYC OSINT</p>", unsafe_allow_html=True)
     st.header("Modo")
     mode = st.radio("¿Sobre quién corre el análisis?", ["Sintético (abierto)", "En vivo (con código)"],
                     label_visibility="collapsed")
@@ -117,7 +174,7 @@ if not live:
     pid = st.selectbox("Persona sintética", list(personas),
                        format_func=lambda k: f"{personas[k]['label']}")
     persona = personas[pid]
-    st.info(f"**SINTÉTICO.** {persona['description']} Nombres, fuentes y hechos son ficticios.")
+    note(f"<b>SINTÉTICO.</b> {persona['description']} Nombres, fuentes y hechos son ficticios.")
     with st.expander("Datos de entrada y fuentes ficticias"):
         st.json(persona["profile"])
         st.dataframe(pd.DataFrame(persona["sources"])[["id", "title", "url", "date"]], hide_index=True)
@@ -189,7 +246,9 @@ if base is None:
 
 # ---------------- Resultados ----------------
 st.divider()
-st.subheader(f"{base.profile.full_name} · modo {base.mode}")
+st.markdown("<p class='kyc-eyebrow'>Borrador KYC</p>"
+            f"<div class='kyc-subject'><span class='name'>{base.profile.full_name}</span>"
+            f"<span class='kyc-badge'>modo {base.mode}</span></div>", unsafe_allow_html=True)
 
 # Simular otro monto: tope, coherencia, riesgo y DD se recalculan en Python (US$ 0).
 ver = st.session_state.get("result_ver", 0)
@@ -205,17 +264,28 @@ if result.amount_note:
     st.warning(result.amount_note)
 
 r, w = result.risk, result.wealth
-m1, m2, m3, m4, m5 = st.columns(5)
-m1.markdown(f"<div style='font-size:0.85rem'>Riesgo</div><div style='font-size:1.8rem;font-weight:700;"
-            f"color:{LEVEL_COLORS.get(r.level, '#000')}'>{r.level.upper()}</div>", unsafe_allow_html=True)
-m2.metric("Debida diligencia", r.dd_type)
-m3.metric("Monto tope plausible", f"S/ {w.tope_pen:,.0f}")
-m4.metric("Declarado / tope", f"{w.ratio:.2f}" if w.ratio is not None else "s/d",
-          w.coherence.replace("_", " "), delta_color="off")
-m5.metric("Costo del informe", f"US$ {result.usage.cost_usd():.2f}", f"{result.seconds:.0f} s", delta_color="off")
-st.write(f"**Recomendación:** {r.recommendation}")
+level_color = LEVEL_COLORS.get(r.level, GRAPHITE)
 
-st.download_button("⬇️ Descargar borrador KYC (.docx)", data=to_docx(result),
+
+def card(label: str, value: str, sub: str = "", color: str | None = None, title: str = "") -> str:
+    accent = f" style='border-left:4px solid {color}'" if color else ""
+    value_color = f" style='color:{color}'" if color else ""
+    return (f"<div class='kyc-card'{accent} title='{title}'><div class='label'>{label}</div>"
+            f"<div class='value'{value_color}>{value}</div><div class='sub'>{sub or '&nbsp;'}</div></div>")
+
+
+st.markdown("<div class='kyc-wrap'><div class='kyc-cards'>" + "".join([
+    card("Riesgo", r.level.upper(), f"puntaje {r.score}", color=level_color),
+    card("Debida diligencia", r.dd_type),
+    card("Monto tope plausible", f"S/ {w.tope_pen:,.0f}", "ahorro acumulado, no sueldo",
+         title="Ingreso laboral bruto anual (ENAHO 2024) × 35 % de ahorro, año por año de carrera, "
+               "capitalizado al 4 % real"),
+    card("Declarado / tope", f"{w.ratio:.2f}" if w.ratio is not None else "s/d", w.coherence.replace("_", " ")),
+    card("Costo del informe", f"US$ {result.usage.cost_usd():.2f}", f"{result.seconds:.0f} s"),
+]) + "</div></div>", unsafe_allow_html=True)
+st.markdown(f"<div class='kyc-reco'><b>Recomendación:</b> {r.recommendation}</div>", unsafe_allow_html=True)
+
+st.download_button("Descargar borrador KYC (.docx)", data=to_docx(result), icon=":material/download:",
                    file_name=f"KYC_{result.profile.full_name.replace(' ', '_')}.docx",
                    mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document")
 
@@ -247,19 +317,22 @@ with t2:
             "clasificación": risk.classify(e), "categoría": e.category, "dirección": e.risk_direction,
             "resumen": e.summary, "por qué identidad": e.identity_reason, "por qué relevancia": e.relevance_reason,
         } for e in ev])
-        points = alt.Chart(df).mark_circle(size=220, opacity=0.85).encode(
+        points = alt.Chart(df).mark_circle(size=240, opacity=0.95, stroke=GRAPHITE, strokeWidth=1).encode(
             x=alt.X("identidad:Q", scale=alt.Scale(domain=[0, 1]), title="¿Es la misma persona?"),
             y=alt.Y("relevancia:Q", scale=alt.Scale(domain=[0, 1]), title="¿Pesa para el riesgo o el SoW?"),
             color=alt.Color("clasificación:N", scale=alt.Scale(domain=list(CLASS_COLORS),
                                                                 range=list(CLASS_COLORS.values()))),
             tooltip=["id", "categoría", "resumen", "por qué identidad", "por qué relevancia"],
         )
-        labels = alt.Chart(df).mark_text(dy=-14, fontSize=11).encode(x="identidad:Q", y="relevancia:Q", text="id:N")
-        rules = alt.Chart(pd.DataFrame({"x": [risk.IDENTITY_MIN]})).mark_rule(strokeDash=[4, 4]).encode(x="x:Q") + \
-            alt.Chart(pd.DataFrame({"y": [risk.RELEVANCE_MIN]})).mark_rule(strokeDash=[4, 4]).encode(y="y:Q")
-        st.altair_chart((points + labels + rules).properties(height=380), width="stretch")
-        st.caption("Arriba a la derecha (rojo): evidencia que alimenta el riesgo. Izquierda (celeste): homónimos "
-                   "descartados. Gris: contexto que no pesa (opiniones, menciones tangenciales).")
+        labels = alt.Chart(df).mark_text(dy=-15, fontSize=11, fontWeight="bold", color=GRAPHITE).encode(
+            x="identidad:Q", y="relevancia:Q", text="id:N")
+        rules = alt.Chart(pd.DataFrame({"x": [risk.IDENTITY_MIN]})).mark_rule(
+            strokeDash=[4, 4], color=STEEL).encode(x="x:Q") + \
+            alt.Chart(pd.DataFrame({"y": [risk.RELEVANCE_MIN]})).mark_rule(
+                strokeDash=[4, 4], color=STEEL).encode(y="y:Q")
+        st.altair_chart(styled((points + labels + rules).properties(height=380)), width="stretch")
+        st.caption("Arriba a la derecha (dorado): evidencia que alimenta el riesgo. Izquierda (gris claro): "
+                   "homónimos descartados. Arena: contexto que no pesa (opiniones, menciones tangenciales).")
         st.dataframe(df.sort_values(["clasificación", "relevancia"], ascending=[True, False]),
                      hide_index=True, width="stretch")
     st.markdown(f"**Homónimos:** {result.findings.homonyms_note}")
@@ -277,10 +350,12 @@ with t3:
                 f"**Coherencia:** {w.coherence.replace('_', ' ')}")
     bars = pd.DataFrame({"Monto": ["Base", "Tope plausible", "Declarado"],
                          "Soles": [w.base_pen, w.tope_pen, w.declared_pen]})
-    c2.altair_chart(alt.Chart(bars).mark_bar().encode(
+    c2.altair_chart(styled(alt.Chart(bars).mark_bar(cornerRadiusEnd=3).encode(
         x=alt.X("Soles:Q", title="S/"), y=alt.Y("Monto:N", sort=None, title=None),
-        color=alt.Color("Monto:N", legend=None, scale=alt.Scale(range=["#9ecae1", "#3182bd", "#c62828"])),
-        tooltip=[alt.Tooltip("Soles:Q", format=",.0f")]).properties(height=180), width="stretch")
+        color=alt.Color("Monto:N", legend=None, sort=None,
+                        scale=alt.Scale(domain=["Base", "Tope plausible", "Declarado"],
+                                        range=[SAND, GRAPHITE, GOLD])),
+        tooltip=[alt.Tooltip("Soles:Q", format=",.0f")]).properties(height=180)), width="stretch")
     st.markdown(f"**Ocupación (CNO):** {w.occupation} · {w.career_years} años de carrera · percentil tope "
                 f"{w.percentile_tope}")
     st.markdown("**Supuestos:**\n" + "\n".join(f"- {a}" for a in w.assumptions))
@@ -301,3 +376,7 @@ with t5:
                  column_config={"url": st.column_config.LinkColumn("url")})
     st.caption(f"{result.usage.input_tokens:,} tokens de entrada · {result.usage.output_tokens:,} de salida · "
                f"{result.usage.web_searches} búsquedas web · pasos: {', '.join(result.usage.calls)}")
+
+st.markdown("<div class='kyc-footer'>Borrador para revisión del oficial de cumplimiento: no constituye una "
+            "decisión de aceptación. Solo fuentes públicas; cada hallazgo lleva su fuente.</div>",
+            unsafe_allow_html=True)

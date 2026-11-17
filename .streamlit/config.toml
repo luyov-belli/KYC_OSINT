@@ -1,0 +1,30 @@
+# Tema de la app: dorado, arena, grafito y acero.
+# Solo cambia la apariencia; el motor (kyc/) no depende de este archivo.
+
+[theme]
+base = "light"
+primaryColor = "#facb00"            # dorado: acentos, pestañas, botón principal
+backgroundColor = "#ffffff"
+secondaryBackgroundColor = "#f6f4ef" # arena muy clara: tarjetas, inputs, expanders
+textColor = "#2f2f2f"
+linkColor = "#7d6d47"
+borderColor = "#e3ddd0"
+showWidgetBorder = true
+baseRadius = "6px"
+buttonRadius = "6px"
+font = "Inter:https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap, sans-serif"
+headingFont = "Inter, sans-serif"
+headingFontWeights = [700, 700, 600, 600, 600, 600]
+dataframeHeaderBackgroundColor = "#f1ede4"
+dataframeHeaderTextColor = "#424242"
+chartCategoricalColors = ["#facb00", "#424242", "#998867", "#686b6b", "#d9c37a", "#b9bcbc"]
+
+[theme.sidebar]
+backgroundColor = "#424242"         # grafito
+secondaryBackgroundColor = "#4d4d4d"
+textColor = "#f2f2f2"
+primaryColor = "#facb00"
+borderColor = "#5c5c5c"
+linkColor = "#facb00"
+codeBackgroundColor = "#4d4d4d"
+codeTextColor = "#facb00"

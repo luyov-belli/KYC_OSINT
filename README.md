@@ -16,19 +16,21 @@ Hacemos **borradores de KYC** para **boutiques de wealth management en el Perú*
 
 ## 2. Founder
 
-**Adrián Luyo**, estudiante de la Universidad del Pacífico. Trabajo en wealth management en una boutique de inversiones en Lima. Ahí cada miembro del equipo asume funciones fuera de su puesto: mi compañero de Back Office redacta los KYC de los leads a partir de su propia investigación, una tarea que en rigor es de compliance. Veo el problema todos los días desde el lado comercial: un lead que tarda en pasar KYC es un lead que se enfría.
-
-_TODO (Adrián): ajustar con tu trayectoria y tu rol exacto._
+**Adrián Luyo.** Estudio Economía en la Universidad del Pacífico (octavo ciclo) y trabajo desde hace cuatro meses como *investment operations trainee* en una boutique de wealth management en Lima. En una firma pequeña cada persona asume funciones fuera de su puesto: mi compañero de Back Office redacta los KYC de los prospectos a partir de su propia investigación, una tarea que en rigor es de Compliance. Lo veo desde operaciones: mientras el KYC no está listo, el onboarding no avanza y el cliente espera.
 
 ## 3. Problema
 
 **Quién lo sufre.** Boutiques de wealth management, SAF, SAB y family offices en el Perú. Antes de abrir una cuenta deben conocer al cliente: quién es, si es PEP, si figura en listas de sanciones, si tiene noticias adversas y si su patrimonio tiene un origen coherente. En una firma pequeña lo hace alguien de Back Office o de compliance, a mano, googleando.
 
-**Cuánto cuesta.** _TODO con las conversaciones: horas por KYC × KYC al mes × costo por hora; leads perdidos por demora._
+**Cuánto cuesta.** Según las tres conversaciones:
 
-**Cómo se resuelve hoy.** Búsquedas manuales en Google, Infogob, El Peruano y medios; listas OFAC y ONU consultadas a mano; el criterio de "¿tiene sentido este patrimonio?" queda en la cabeza de quien revisa. Las bases globales (World-Check de LSEG, Dow Jones Risk & Compliance, ComplyAdvantage) son caras para una boutique y entregan coincidencias sueltas, no un borrador.
+- Un KYC sencillo toma **de 1 a 2 horas de trabajo efectivo** de Back Office, que hace varios al mes. Los casos complejos toman **varios días**: estructuras societarias, beneficiarios finales, origen de los fondos.
+- Lo más pesado es repetir búsquedas, contrastar datos y trasladarlos a un mismo documento (Back Office), y decidir si una coincidencia corresponde de verdad al cliente (Compliance).
+- La demora **retrasa el onboarding** y afecta la experiencia comercial (Head of Wealth Management).
 
-**Evidencia:** notas de 3 conversaciones con usuarios potenciales en [`docs/research/`](docs/research/).
+**Cómo se resuelve hoy.** Búsquedas manuales en Google, Infogob, El Peruano y medios; listas OFAC y ONU consultadas a mano; el criterio de "¿tiene sentido este patrimonio?" queda en la cabeza de quien revisa: en las tres conversaciones, validar el patrimonio es "criterio", no un cálculo estandarizado. Las bases globales (World-Check de LSEG, Dow Jones Risk & Compliance, ComplyAdvantage) son caras para una boutique y entregan coincidencias sueltas, no un borrador.
+
+**Evidencia:** notas de 3 conversaciones (Head of Wealth Management, Back Office y Compliance) y lo que aprendí de ellas, en [`docs/research/`](docs/research/).
 
 ## 4. Solución e insight
 
@@ -41,6 +43,8 @@ Escribes el nombre del lead y sus datos declarados. En un minuto sale un **borra
 - **Nivel de riesgo y tipo de debida diligencia** (simplificada, estándar o reforzada) con reglas explícitas.
 
 **Insight.** El cuello de botella del KYC no es encontrar información, sino **separar lo relevante del ruido** y **juzgar si el patrimonio tiene sentido**. Por eso el LLM solo juzga y redacta; los números (monto tope) y la decisión de riesgo los hacen reglas transparentes que un oficial de cumplimiento puede revisar y defender ante el regulador.
+
+Las conversaciones lo confirman: para Compliance lo más difícil es saber si una coincidencia corresponde al cliente, y los tres entrevistados dicen que validar el patrimonio no tiene fórmula.
 
 ## 5. Why now
 
@@ -89,15 +93,15 @@ flowchart LR
 
 ## 7. Modelo de negocio
 
-- **Quién paga:** boutiques de wealth management, SAF, SAB y family offices (el área comercial o la de compliance).
-- **Precio:** _preliminar, a validar en las conversaciones:_ **S/ 49 por informe**, o **S/ 990 al mes** con 30 informes.
+- **Quién paga:** boutiques de wealth management, SAF, SAB y family offices. Según los tres entrevistados, la compra la deciden Compliance y la dirección.
+- **Precio:** **S/ 990 al mes** con 30 informes (la suscripción mensual que Compliance vio viable) o **S/ 49 por informe** suelto. Nadie dio un monto en las conversaciones: es una hipótesis anclada a las 1-2 horas de Back Office que ahorra cada KYC.
 - **Costo por informe (medido con `usage` de la API):**
   - **En vivo:** ~US$ 0.43 (≈ S/ 1.5). Son 5 búsquedas web (US$ 0.05), ~51 mil tokens de entrada y ~9 mil de salida con Claude Opus 5.5. Tarda entre 75 y 95 s.
   - **Sintético:** ~US$ 0.09 por informe al generarlo (sin búsqueda web) y ~25 s ([evaluación](docs/eval_sinteticos.md): 5/5 casos correctos). Mostrarlo desde el resultado guardado: US$ 0.
   - **Simular otro monto:** US$ 0 (reglas en Python).
   - **Servidor:** S/ 0 en Streamlit Community Cloud.
   - **Margen bruto:** con S/ 49 por informe, el costo variable es ~3 % del precio.
-- **Qué sigue:** piloto en mi firma, plantilla de KYC de cada cliente, más fuentes peruanas (Poder Judicial, SUNARP con convenio) e historial de monitoreo.
+- **Qué sigue:** piloto en mi firma; fecha de consulta por fuente y paquete de evidencia para auditoría (pedidos de Compliance); que el analista confirme o descarte cada coincidencia; plantilla de KYC de cada cliente; más fuentes peruanas (Poder Judicial, SUNARP con convenio) y monitoreo periódico.
 
 ## 8. Herramientas del curso
 
@@ -121,9 +125,15 @@ Las dos principales son las que hacen el KYC: **Scraping y APIs (03)** trae los 
 
 Construido con **Claude Code** a lo largo del 15 y 16 de noviembre de 2026.
 
-- **Yo (Adrián):** el problema, los filtros de compliance que aplica una boutique, el criterio de qué es relevante, el umbral de DD por monto, los casos de prueba y la validación con usuarios.
-- **Claude Code:** propuso la arquitectura y la priorización; escribió el código de `kyc/`, `app.py`, los scripts, las pruebas, los cinco fixtures sintéticos y el procesamiento de la ENAHO (en una sesión paralela); y redactó el primer borrador de este README.
-- _TODO (Adrián): qué revisaste o cambiaste tú._
+**Yo (Adrián):**
+
+- Elegí el problema desde mi trabajo y definí el criterio de compliance: los filtros, la idea de un espectro de relevancia en vez de un sí o no, y la del monto tope. Limité el alcance a residentes en el Perú y definí el umbral de US$ 500 mil para la DD reforzada.
+- Decidí cómo mostrarlo: mi propio caso más personas sintéticas en vez de figuras públicas, el código de acceso del modo en vivo, guardar los resultados sintéticos y simular el monto en vez de pagar otra corrida.
+- Hice las 3 conversaciones con usuarios.
+- Creé el repo, la API key con tope de gasto y el despliegue en Streamlit Community Cloud con sus secrets.
+- Validé el resultado: probé mi caso en vivo, revisé que el monto tope tuviera sentido con la ENAHO, detecté que el gasto de la consola de Anthropic no cuadraba con mi cuenta y lo reconciliamos, revisé qué herramientas del curso usa el producto y definí la paleta de la interfaz.
+
+**Claude Code:** propuso la arquitectura y la priorización; escribió el código de `kyc/`, `app.py`, los scripts, las pruebas, la integración continua, los cinco fixtures sintéticos (el primero, a partir de mi idea de un creador de contenido que opina de política) y el procesamiento de la ENAHO (en una sesión paralela); y redactó el primer borrador de este README.
 
 ---
 
