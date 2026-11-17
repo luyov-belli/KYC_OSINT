@@ -74,7 +74,19 @@ uv run streamlit run app.py
 
 Pruebas sin API: `uv run pytest` (corren en GitHub Actions en cada push). Evaluación con los sintéticos: `uv run python scripts/eval_synthetic.py` ([resultados](docs/eval_sinteticos.md)).
 
-**Capturas:** _pendiente (3)_.
+**Capturas**
+
+Mi propio caso en vivo, con el monto simulado en US$ 5,000: semáforo de riesgo, monto tope y descargas.
+
+![Resumen de riesgo de mi caso en vivo](docs/img/01_resumen_riesgo.png)
+
+Espectro de evidencia de una persona sintética: lo que pesa (dorado), el contexto (arena) y el homónimo descartado (gris).
+
+![Espectro de evidencia](docs/img/02_espectro_evidencia.png)
+
+Borrador KYC en Word de mi caso en vivo (versión anterior al formato con el manual de marca). Los nombres de los homónimos, que son terceros reales, están ocultos.
+
+![Borrador KYC en Word](docs/img/03_borrador_word.png)
 
 **Arquitectura:** ver [`docs/architecture.md`](docs/architecture.md).
 
