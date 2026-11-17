@@ -6,7 +6,7 @@
 
 Proyecto final de *Data Science con Python* (Universidad del Pacífico, 2026-II) · [issue #205](https://github.com/d2cml-ai/Data-Science-Python/issues/205)
 
-**Demo:** [kyc-osint.streamlit.app](https://kyc-osint.streamlit.app/) · **Video de respaldo:** _pendiente_
+**Demo:** [kyc-osint.streamlit.app](https://kyc-osint.streamlit.app/) · **Video de respaldo:** [Google Drive](https://drive.google.com/file/d/1hvrkSwS4qW0rWbOF6MigdD-gkqEnUATe/view?usp=sharing)
 
 ---
 
