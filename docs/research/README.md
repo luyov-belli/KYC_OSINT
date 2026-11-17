@@ -28,4 +28,6 @@ Tres conversaciones con personas de una boutique de wealth management en Lima, u
 | No hay fórmula para el patrimonio | Monto tope plausible con la ENAHO 2024 y supuestos visibles, comparado con lo declarado |
 | Fuentes verificables y justificación de cada alerta | Cada afirmación lleva su cita [n] con enlace; cada regla de riesgo deja su razón y sus puntos |
 | Identificar alertas rápido | Semáforo de riesgo, tipo de DD y factores en la primera pantalla |
-| Fecha de consulta y evidencia para auditoría | Hoy: fecha de generación del informe. Pendiente: fecha por fuente y paquete de evidencia exportable |
+| Fecha de consulta y evidencia para auditoría | Descarga de evidencia en JSON: enlace, fecha de publicación, fecha de consulta y extracto de cada fuente, con la huella SHA-256 que la une al Word |
+| Respaldo formal del onboarding | Word con el manual de marca y bloque de decisión y firmas (elaborado, revisado, aprobado) |
+| Separar coincidencias confirmadas de falsos positivos | Hoy lo hace el puntaje de identidad. Pendiente: que el analista confirme o descarte cada una |

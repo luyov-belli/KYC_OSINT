@@ -21,6 +21,7 @@ from docx.oxml import OxmlElement
 from docx.oxml.ns import qn
 from docx.shared import Cm, Pt, RGBColor
 
+from .evidence import fingerprint
 from .pipeline import KycResult
 from .risk import classify
 
@@ -379,6 +380,9 @@ def to_docx(r: KycResult) -> bytes:
     _run(doc.add_paragraph(), f"Costo de este informe: US$ {r.usage.cost_usd():.2f} "
          f"({r.usage.input_tokens:,} tokens de entrada, {r.usage.output_tokens:,} de salida, "
          f"{r.usage.web_searches} búsquedas) · {r.seconds:.0f} s", size=8, italic=True, color=STEEL)
+    _run(doc.add_paragraph(), f"Huella SHA-256 del paquete de evidencia (.json): {fingerprint(r)}. Si coincide con "
+         "la del archivo de evidencia, ambos son del mismo análisis y la evidencia no se modificó.",
+         size=8, italic=True, color=STEEL)
 
     buf = io.BytesIO()
     doc.save(buf)

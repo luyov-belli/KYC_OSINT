@@ -20,6 +20,7 @@ from dotenv import load_dotenv
 
 from kyc import pipeline, risk, sanctions
 from kyc.llm import MODEL, RefusalError, make_client
+from kyc.evidence import evidence_json, fingerprint
 from kyc.report import to_docx
 from kyc.schemas import ProfileInput, SourceDoc
 
@@ -309,9 +310,16 @@ st.markdown("<div class='kyc-wrap'><div class='kyc-cards'>" + "".join([
 ]) + "</div></div>", unsafe_allow_html=True)
 st.markdown(f"<div class='kyc-reco'><b>Recomendación:</b> {r.recommendation}</div>", unsafe_allow_html=True)
 
-st.download_button("Descargar borrador KYC (.docx)", data=to_docx(result), icon=":material/download:",
-                   file_name=f"KYC_{result.profile.full_name.replace(' ', '_')}.docx",
+file_stem = f"{result.profile.full_name.replace(' ', '_')}_{result.generated_at[:10]}"
+d1, d2, d3 = st.columns([1, 1, 2])
+d1.download_button("Descargar borrador KYC (.docx)", data=to_docx(result), icon=":material/download:",
+                   file_name=f"KYC_{file_stem}.docx", width="stretch",
                    mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document")
+# Evidencia para auditoría: empaqueta lo ya calculado (no llama al modelo, US$ 0)
+d2.download_button("Descargar evidencia (.json)", data=evidence_json(result), icon=":material/fact_check:",
+                   file_name=f"Evidencia_KYC_{file_stem}.json", mime="application/json", width="stretch")
+d3.caption(f"La evidencia guarda cada fuente con su enlace, fecha de consulta y extracto, los puntajes con sus "
+           f"razones y las reglas aplicadas. Huella SHA-256: `{fingerprint(result)[:16]}…` (también en el Word).")
 
 t1, t2, t3, t4, t5 = st.tabs(["Factores de riesgo", "Espectro de evidencia", "Monto tope",
                               "Borrador KYC", "Fuentes"])
@@ -395,7 +403,8 @@ with t4:
         st.markdown("**Documentos a solicitar:**\n" + "\n".join(f"- {d}" for d in n.documentos_a_solicitar))
 
 with t5:
-    st.dataframe(pd.DataFrame([s.model_dump() for s in result.sources])[["id", "title", "url", "date"]],
+    st.dataframe(pd.DataFrame([{"id": s.id, "título": s.title, "url": s.url, "publicada": s.date,
+                                "consultada": result.generated_at} for s in result.sources]),
                  hide_index=True, width="stretch",
                  column_config={"url": st.column_config.LinkColumn("url")})
     st.caption(f"{result.usage.input_tokens:,} tokens de entrada · {result.usage.output_tokens:,} de salida · "

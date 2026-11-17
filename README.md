@@ -41,6 +41,8 @@ Escribes el nombre del lead y sus datos declarados. En un minuto sale un **borra
 - **Espectro de evidencia:** cada fuente recibe dos puntajes, *¿es la misma persona?* y *¿pesa para el riesgo?*. Las opiniones en redes y los homónimos no contaminan el análisis, pero quedan registrados.
 - **Monto tope plausible:** con cuánto dinero, como máximo, podría venir este cliente según su ocupación, edad y negocio (ENAHO 2024 + Ley MYPE + tipo de cambio del BCRP), comparado con lo que declara.
 - **Nivel de riesgo y tipo de debida diligencia** (simplificada, estándar o reforzada) con reglas explícitas.
+- **Bloque de decisión y firmas** en el Word: elaborado por Back Office, revisado por el oficial de cumplimiento y aprobado por la gerencia.
+- **Evidencia para auditoría** en un JSON: cada fuente con su enlace, fecha de publicación, fecha de consulta y extracto; los puntajes con sus razones; las reglas aplicadas y sus umbrales. Una huella SHA-256 impresa en el Word une el informe con su evidencia y delata cualquier edición posterior del JSON.
 
 **Insight.** El cuello de botella del KYC no es encontrar información, sino **separar lo relevante del ruido** y **juzgar si el patrimonio tiene sentido**. Por eso el LLM solo juzga y redacta; los números (monto tope) y la decisión de riesgo los hacen reglas transparentes que un oficial de cumplimiento puede revisar y defender ante el regulador.
 
@@ -59,6 +61,7 @@ Las conversaciones lo confirman: para Compliance lo más difícil es saber si un
 - **Modo sintético (abierto):** cinco personas ficticias con evidencia ficticia: un creador de contenido que opina de política sin ser PEP, una contadora con un homónimo sentenciado, un ex funcionario regional (PEP), un empresario con investigación fiscal por lavado y una comerciante que declara muy por encima de su tope. Sus resultados están precalculados en [`fixtures/resultados/`](fixtures/resultados/): se muestran al instante y sin costo de API.
 - **Modo en vivo (con código de acceso):** busca en fuentes públicas reales. Está protegido para que nadie use la URL pública para perfilar a terceros. En la presentación corre sobre mi propio perfil.
 - **Simular otro monto:** después de generar un informe, cambias el monto declarado y se recalculan al instante el monto tope, la coherencia, el riesgo y el tipo de DD. Es Python puro: no vuelve a llamar al modelo ni cuesta API. El texto del borrador conserva el monto original, y una nota lo advierte.
+- **Descargas:** el borrador en Word (con el manual de marca de la firma y el bloque de firmas) y la evidencia para auditoría en JSON. Ninguna de las dos vuelve a llamar al modelo.
 
 **Correrlo en local**
 
@@ -98,10 +101,10 @@ flowchart LR
 - **Costo por informe (medido con `usage` de la API):**
   - **En vivo:** ~US$ 0.43 (≈ S/ 1.5). Son 5 búsquedas web (US$ 0.05), ~51 mil tokens de entrada y ~9 mil de salida con Claude Opus 5.5. Tarda entre 75 y 95 s.
   - **Sintético:** ~US$ 0.09 por informe al generarlo (sin búsqueda web) y ~25 s ([evaluación](docs/eval_sinteticos.md): 5/5 casos correctos). Mostrarlo desde el resultado guardado: US$ 0.
-  - **Simular otro monto:** US$ 0 (reglas en Python).
+  - **Simular otro monto, Word y evidencia:** US$ 0 (Python, sin llamar al modelo).
   - **Servidor:** S/ 0 en Streamlit Community Cloud.
   - **Margen bruto:** con S/ 49 por informe, el costo variable es ~3 % del precio.
-- **Qué sigue:** piloto en mi firma; fecha de consulta por fuente y paquete de evidencia para auditoría (pedidos de Compliance); que el analista confirme o descarte cada coincidencia; plantilla de KYC de cada cliente; más fuentes peruanas (Poder Judicial, SUNARP con convenio) y monitoreo periódico.
+- **Qué sigue:** piloto en mi firma; que el analista confirme o descarte cada coincidencia y el riesgo se recalcule; plantilla de KYC de cada cliente; más fuentes peruanas (Poder Judicial, SUNARP con convenio) y monitoreo periódico.
 
 ## 8. Herramientas del curso
 

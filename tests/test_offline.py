@@ -1,7 +1,8 @@
 """Pruebas sin API: reglas de riesgo, monto tope e informe Word con hallazgos armados a mano."""
 
-from kyc import llm, risk, sanctions, wealth
-from kyc import pipeline
+import json
+
+from kyc import evidence, llm, pipeline, risk, sanctions, wealth
 from kyc.pipeline import KycResult
 from kyc.report import to_docx
 from kyc.schemas import (EvidenceAssessment, Findings, KycNarrative, LiquidityEvent,
@@ -120,3 +121,27 @@ def test_simulated_amount_recomputes_risk_without_llm():
     assert big.narrative is res.narrative and big.amount_note
     assert pipeline.with_amount(res, 1_000, "USD") is res  # mismo monto: sin cambios
     assert b"PK" == to_docx(big)[:2]
+
+
+def test_evidence_package_is_complete_and_verifiable():
+    res = make_result()
+    data = json.loads(evidence.evidence_json(res))
+    assert len(data["fuentes"]) == len(res.sources)
+    for f in data["fuentes"]:
+        assert f["url"].startswith("https://") and f["fecha_consulta"] == res.generated_at
+    evaluated = [f for f in data["fuentes"] if f["evaluacion"]]
+    assert {f["evaluacion"]["clasificacion"] for f in evaluated} >= {"considerada", "descartada"}
+    assert all(f["evaluacion"]["razon_identidad"] for f in evaluated)
+    assert data["riesgo"]["umbrales"]["identidad_minima"] == risk.IDENTITY_MIN
+    assert data["riesgo"]["factores"] and data["monto_tope"]["supuestos"]
+    assert evidence.verify(data)                       # la huella cuadra
+    data["riesgo"]["nivel"] = "bajo"                    # si alguien edita el JSON...
+    assert not evidence.verify(data)                   # ...la huella ya no cuadra
+
+
+def test_word_and_evidence_share_fingerprint():
+    from docx import Document
+    import io
+    res = make_result()
+    text = "\n".join(p.text for p in Document(io.BytesIO(to_docx(res))).paragraphs)
+    assert evidence.fingerprint(res) in text
